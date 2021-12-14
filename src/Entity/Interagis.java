@@ -11,4 +11,43 @@ package Entity;
  */
 public class Interagis {
     
+    private int MedPerturbateur;
+    private int MedMedPerturbe;
+   
+  
+
+    public Interagis(int unPerturbateur,int unPerturbe){
+        
+        MedPerturbateur = unPerturbateur;
+        MedMedPerturbe = unPerturbe;
+       
+    } 
+
+    /**
+     * @return the MedPerturbateur
+     */
+    public int getMedPerturbateur() {
+        return MedPerturbateur;
+    }
+
+    /**
+     * @param MedPerturbateur the MedPerturbateur to set
+     */
+    public void setMedPerturbateur(int MedPerturbateur) {
+        this.MedPerturbateur = MedPerturbateur;
+    }
+
+    /**
+     * @return the MedMedPerturbe
+     */
+    public int getMedMedPerturbe() {
+        return MedMedPerturbe;
+    }
+
+    /**
+     * @param MedMedPerturbe the MedMedPerturbe to set
+     */
+    public void setMedMedPerturbe(int MedMedPerturbe) {
+        this.MedMedPerturbe = MedMedPerturbe;
+    }
 }
