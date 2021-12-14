@@ -30,13 +30,14 @@ public class frmPrescription extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtMedicament = new javax.swing.JTextField();
-        txttypePers = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         btnPlus = new javax.swing.JButton();
         btnmoins = new javax.swing.JButton();
+        cmbMedicament = new javax.swing.JComboBox<>();
+        cmbTypePerso = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 11)); // NOI18N
         jLabel1.setText("MEDICAMENT");
@@ -61,6 +62,15 @@ public class frmPrescription extends javax.swing.JFrame {
             }
         });
 
+        cmbMedicament.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DOLIPRANE 1000 mg", "DAFALGAN 1000 mg", "LEVOTHYROX 100 microg", "IMODIUM 2 mg", "VOLTARENE 100 mg", "SPASFON LYOC 160 mg", "PARACETAMOL BIOGARAN 1 g", "FORLAX 10 g", "VENTOLINE 100 microgramme", "BETADINE 10 %" }));
+        cmbMedicament.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMedicamentActionPerformed(evt);
+            }
+        });
+
+        cmbTypePerso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "adulte", "enfant", "personne agee", "femme enceinte", "enfant base age" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,20 +81,18 @@ public class frmPrescription extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txttypePers, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnPlus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnmoins)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                    .addComponent(cmbMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cmbTypePerso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnPlus)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnmoins))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,11 +100,11 @@ public class frmPrescription extends javax.swing.JFrame {
                 .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txttypePers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbTypePerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -116,6 +124,10 @@ public class frmPrescription extends javax.swing.JFrame {
     private void btnmoinsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmoinsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnmoinsActionPerformed
+
+    private void cmbMedicamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMedicamentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbMedicamentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,11 +167,11 @@ public class frmPrescription extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPlus;
     private javax.swing.JButton btnmoins;
+    private javax.swing.JComboBox<String> cmbMedicament;
+    private javax.swing.JComboBox<String> cmbTypePerso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField txtMedicament;
-    private javax.swing.JTextField txttypePers;
     // End of variables declaration//GEN-END:variables
 }
