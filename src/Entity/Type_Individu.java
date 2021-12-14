@@ -10,5 +10,14 @@ package Entity;
  * @author ruth9
  */
 public class Type_Individu {
+
+    private int TIcode;
+    private String TIlibelle;
     
+  
+    public Type_Individu(int unCode,String unLibelle){
+        TIcode = unCode;
+        TIlibelle= unLibelle;
+       
+    }
 }
