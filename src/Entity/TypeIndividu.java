@@ -5,7 +5,6 @@
  */
 package Entity;
 
-
 public class TypeIndividu {
 
     private int TIcode;
