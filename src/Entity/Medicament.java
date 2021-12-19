@@ -5,10 +5,7 @@
  */
 package Entity;
 
-/**
- *
- * @author ruth9
- */
+
 public class Medicament {
     private int idMedicament;
     private String nomMedicament;
@@ -62,13 +59,15 @@ public class Medicament {
     public int getCdFamMedicament() {
         return cdFamMedicament;
     }
-
+    
     /**
      * @param cdFamMedicament the cdFamMedicament to set
      */
     public void setCdFamMedicament(int cdFamMedicament) {
         this.cdFamMedicament = cdFamMedicament;
     }
+    
+    
 
     /**
      * @return the composition
@@ -77,9 +76,7 @@ public class Medicament {
         return composition;
     }
 
-    /**
-     * @return the effet
-     */
+    
     public String getEffet() {
         return effet;
     }

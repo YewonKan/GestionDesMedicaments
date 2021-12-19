@@ -7,11 +7,10 @@ package Entity;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author ruth9
- */
 public interface IMetier {
     public ArrayList<Medicament> getAllMedicament();
-           
+    public ArrayList<TypeIndividu> getAllIndividu();  
+    public ArrayList<Interagis> getAllInteragis();
+    public String getNameFamille(int a);
+    public ArrayList<MedicamentFamNom> getAllMedicamentWithFamName();
 }
