@@ -6,25 +6,27 @@
 package Entity;
 
 
-public class Medicament {
-    private int idMedicament;
+public class MedicamentFamNom
+{
+     private int idMedicament;
     private String nomMedicament;
-    private int cdFamMedicament;
+    private String nomFamMedicament;
     private String composition;
     private String effet;
     private String contreIndic;
     private float Prix;
     
     
-    public Medicament(int unId, String unNom, int unCode, String unComposition, String unEffet, String unContreIndic, float unPrix){
+    public MedicamentFamNom(int unId, String unNom, String unCode, String unComposition, String unEffet, String unContreIndic, float unPrix){
         idMedicament = unId;
         nomMedicament = unNom;
-        cdFamMedicament = unCode;
+        nomFamMedicament = unCode;
         composition = unComposition;
         effet = unEffet;
         contreIndic = unContreIndic;
         Prix = unPrix;
     }
+
     /**
      * @return the idMedicament
      */
@@ -54,20 +56,18 @@ public class Medicament {
     }
 
     /**
-     * @return the cdFamMedicament
+     * @return the nomFamMedicament
      */
-    public int getCdFamMedicament() {
-        return cdFamMedicament;
+    public String getNomFamMedicament() {
+        return nomFamMedicament;
     }
-    
+
     /**
-     * @param cdFamMedicament the cdFamMedicament to set
+     * @param nomFamMedicament the nomFamMedicament to set
      */
-    public void setCdFamMedicament(int cdFamMedicament) {
-        this.cdFamMedicament = cdFamMedicament;
+    public void setNomFamMedicament(String nomFamMedicament) {
+        this.nomFamMedicament = nomFamMedicament;
     }
-    
-    
 
     /**
      * @return the composition
@@ -76,9 +76,25 @@ public class Medicament {
         return composition;
     }
 
-    
+    /**
+     * @param composition the composition to set
+     */
+    public void setComposition(String composition) {
+        this.composition = composition;
+    }
+
+    /**
+     * @return the effet
+     */
     public String getEffet() {
         return effet;
+    }
+
+    /**
+     * @param effet the effet to set
+     */
+    public void setEffet(String effet) {
+        this.effet = effet;
     }
 
     /**
@@ -105,9 +121,7 @@ public class Medicament {
     /**
      * @param Prix the Prix to set
      */
-    public void setPrix(Float Prix) {
+    public void setPrix(float Prix) {
         this.Prix = Prix;
     }
-    
-            
 }

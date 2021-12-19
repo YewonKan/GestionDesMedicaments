@@ -13,10 +13,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author ruth9
- */
+
 public class FonctionsMetier implements IMetier
 {
 
@@ -45,6 +42,86 @@ public class FonctionsMetier implements IMetier
             return mesMedicaments;   
       }
 
+    @Override
+    public ArrayList<TypeIndividu> getAllIndividu() {
+       ArrayList<TypeIndividu> lesTypesIndividu = new ArrayList<TypeIndividu>();
+       try {
+            
+            maCnx = ConnexionBdd.getCnx();
+            ps= maCnx.prepareStatement("SELECT TIN_CODE, TIN_LIBELLE FROM type_individu");
+            rs= ps.executeQuery();
+            
+            while(rs.next())
+            {
+                TypeIndividu tyIn = new TypeIndividu(rs.getInt(1),rs.getString(2));
+                lesTypesIndividu.add(tyIn);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return lesTypesIndividu;  
+    }
+
+    @Override
+    public ArrayList<Interagis> getAllInteragis() {
+        ArrayList<Interagis> lesInteragis = new ArrayList<Interagis>();
+       try {
+            
+            maCnx = ConnexionBdd.getCnx();
+            ps= maCnx.prepareStatement("SELECT MED_PERTURBATEUR, MED_MED_PERTURBE FROM interagis;");
+            rs= ps.executeQuery();
+            
+            while(rs.next())
+            {
+                Interagis Inter = new Interagis(rs.getInt(1),rs.getInt(2));
+                lesInteragis.add(Inter);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return lesInteragis; 
+    }
+    
+    @Override
+    public String getNameFamille(int a) {
+        String FamilyName = null;
+       try {
+            
+            maCnx = ConnexionBdd.getCnx();
+            ps= maCnx.prepareStatement("select FAM_LIBELLE from famille where FAM_CODE = "+a+";");
+            rs= ps.executeQuery();
+            
+            if(rs.next())
+            {
+               FamilyName = (rs.getNString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return FamilyName; 
+    }
+    
+    public ArrayList<MedicamentFamNom> getAllMedicamentWithFamName(){
+          ArrayList<MedicamentFamNom> mesMedicaments = new ArrayList<MedicamentFamNom>();
+          String FamilyName = null;
+        try {
+            
+            maCnx = ConnexionBdd.getCnx();
+            ps= maCnx.prepareStatement("select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON from medicament");
+            rs= ps.executeQuery();
+            
+            while(rs.next())
+            {
+                FamilyName = getNameFamille(rs.getInt(3));
+                MedicamentFamNom m = new MedicamentFamNom(rs.getInt(1),rs.getString(2),FamilyName,rs.getString(4), rs.getString(5), rs.getString(6),rs.getFloat(7));
+                mesMedicaments.add(m);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return mesMedicaments; 
+    }
+    
   
 }
 

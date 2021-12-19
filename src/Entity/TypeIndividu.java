@@ -5,10 +5,6 @@
  */
 package Entity;
 
-/**
- *
- * @author ruth9
- */
 public class TypeIndividu {
 
     private int TIcode;
