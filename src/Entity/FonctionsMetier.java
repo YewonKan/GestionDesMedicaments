@@ -102,7 +102,7 @@ public class FonctionsMetier implements IMetier
     }
     
     public ArrayList<MedicamentFamNom> getAllMedicamentWithFamName(){
-          ArrayList<MedicamentFamNom> mesMedicaments = new ArrayList<MedicamentFamNom>();
+          ArrayList<MedicamentFamNom> mesMedicaments = new ArrayList<>();
           String FamilyName = null;
         try {
             
@@ -121,7 +121,22 @@ public class FonctionsMetier implements IMetier
         }
             return mesMedicaments; 
     }
-    
+
+ 
+
+    @Override
+    public void setMedicament(Medicament med) {
+        try {
+            maCnx = ConnexionBdd.getCnx();
+            ps= maCnx.prepareStatement("INSERT INTO medicament (MED_DEPOTLEGAL, MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON ) values("+med+")");
+            rs= ps.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+ 
+
   
 }
 
