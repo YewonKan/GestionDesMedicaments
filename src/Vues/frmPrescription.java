@@ -5,15 +5,27 @@
  */
 package Vues;
 
+import Entity.FonctionsMetier;
+import Entity.Medicament;
+import Entity.TypeIndividu;
+import Model.ModelMedicament;
+import Model.ModelPersonne;
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruth9
  */
-public class frmPrescription extends javax.swing.JFrame {
+public class frmPrescription extends javax.swing.JFrame
+{
 
-    /**
-     * Creates new form frmPrescription
-     */
+    FonctionsMetier fm;
+    ModelMedicament mdlMed;
+    ModelPersonne mdlPersonne;
+
     public frmPrescription() {
         initComponents();
     }
@@ -30,14 +42,22 @@ public class frmPrescription extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtdosage = new javax.swing.JTextField();
         btnPlus = new javax.swing.JButton();
         btnmoins = new javax.swing.JButton();
         cmbMedicament = new javax.swing.JComboBox<>();
         cmbTypePerso = new javax.swing.JComboBox<>();
+        btnInsert = new javax.swing.JButton();
+        txtPosologie = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 11)); // NOI18N
         jLabel1.setText("MEDICAMENT");
@@ -49,6 +69,11 @@ public class frmPrescription extends javax.swing.JFrame {
         jLabel3.setText("DOSAGE");
 
         btnPlus.setText("+");
+        btnPlus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlusMouseClicked(evt);
+            }
+        });
         btnPlus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlusActionPerformed(evt);
@@ -56,20 +81,38 @@ public class frmPrescription extends javax.swing.JFrame {
         });
 
         btnmoins.setText("-");
+        btnmoins.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnmoinsMouseClicked(evt);
+            }
+        });
         btnmoins.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmoinsActionPerformed(evt);
             }
         });
 
-        cmbMedicament.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DOLIPRANE 1000 mg", "DAFALGAN 1000 mg", "LEVOTHYROX 100 microg", "IMODIUM 2 mg", "VOLTARENE 100 mg", "SPASFON LYOC 160 mg", "PARACETAMOL BIOGARAN 1 g", "FORLAX 10 g", "VENTOLINE 100 microgramme", "BETADINE 10 %" }));
         cmbMedicament.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMedicamentActionPerformed(evt);
             }
         });
 
-        cmbTypePerso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "adulte", "enfant", "personne agee", "femme enceinte", "enfant base age" }));
+        btnInsert.setText("inserer");
+        btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertMouseClicked(evt);
+            }
+        });
+
+        txtPosologie.setText("jTextField1");
+        txtPosologie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPosologieActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("posologie");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,21 +121,30 @@ public class frmPrescription extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cmbTypePerso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnPlus)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnmoins))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cmbTypePerso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnPlus)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtdosage, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnmoins)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96)
+                        .addComponent(txtPosologie, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,10 +160,16 @@ public class frmPrescription extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPlus)
                     .addComponent(btnmoins))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPosologie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInsert)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -128,6 +186,49 @@ public class frmPrescription extends javax.swing.JFrame {
     private void cmbMedicamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMedicamentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbMedicamentActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        fm = new FonctionsMetier();
+
+        for (Medicament md : fm.getAllMedicament()) {
+            cmbMedicament.addItem(md.getNomMedicament());
+        }
+
+        for (TypeIndividu ty : fm.getAllIndividu()) {
+            cmbMedicament.addItem(ty.getTIlibelle());
+        }
+
+        txtdosage.setText("0");
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnPlusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlusMouseClicked
+        int a = Integer.parseInt(txtdosage.getText());
+        a = a + 1;
+        txtdosage.setText("a");
+    }//GEN-LAST:event_btnPlusMouseClicked
+
+    private void btnmoinsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmoinsMouseClicked
+        int a = Integer.parseInt(txtdosage.getText());
+        if (a == 0) {
+            JOptionPane.showMessageDialog(this, "dosage est déjà 0, nous ne pouvons pas soustraire");
+        }
+        else {
+            a = a - 1;
+            txtdosage.setText("a");
+        }
+
+    }//GEN-LAST:event_btnmoinsMouseClicked
+
+    private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
+        cmbMedicament.getSelectedItem();
+        cmbTypePerso.getSelectedItem();
+        txtdosage.getText();
+        txtPosologie.getText();
+    }//GEN-LAST:event_btnInsertMouseClicked
+
+    private void txtPosologieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPosologieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPosologieActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,7 +258,8 @@ public class frmPrescription extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
             public void run() {
                 new frmPrescription().setVisible(true);
             }
@@ -165,6 +267,7 @@ public class frmPrescription extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInsert;
     private javax.swing.JButton btnPlus;
     private javax.swing.JButton btnmoins;
     private javax.swing.JComboBox<String> cmbMedicament;
@@ -172,6 +275,8 @@ public class frmPrescription extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField txtPosologie;
+    private javax.swing.JTextField txtdosage;
     // End of variables declaration//GEN-END:variables
 }

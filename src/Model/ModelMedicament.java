@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
 
 
 public class ModelMedicament extends AbstractTableModel {
-    private String[] nomsColonnes = {"Index", "Nom Commercial", "Nom de famille", "Composition", "Effet", "Prix"};
+    private String[] nomsColonnes;
     private Vector<String[]> rows;
 
     @Override
@@ -39,11 +39,24 @@ public class ModelMedicament extends AbstractTableModel {
     
     public void loadDatas(ArrayList<MedicamentFamNom> lesMedicaments)
     {
+        nomsColonnes = new String[]{"Numéro ticket","Nom ticket","Date","Etat"};
         rows = new Vector<>();
+        
         for(MedicamentFamNom med : lesMedicaments)
         {
             rows.add(new String[]{String.valueOf(med.getIdMedicament()),med.getNomMedicament(),med.getNomFamMedicament(),med.getComposition(),med.getEffet(),String.valueOf(med.getPrix())});
         }
-        fireTableChanged(null);
+        fireTableDataChanged();
     }
+    
+    public void LoadDatsOnlyName (ArrayList<Medicament> lesMedicaments){
+        nomsColonnes = new String[]{"Nom Medicament"};
+        rows = new Vector<>();
+        
+        for(Medicament med : lesMedicaments){
+            rows.add(new String[]{String.valueOf(med.getNomMedicament())});
+        }
+        fireTableDataChanged();
+    }
+    
 }

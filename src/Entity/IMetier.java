@@ -9,8 +9,16 @@ import java.util.ArrayList;
 
 public interface IMetier {
     public ArrayList<Medicament> getAllMedicament();
-    public ArrayList<TypeIndividu> getAllIndividu();  
+    public ArrayList<TypeIndividu> getAllIndividu();
     public ArrayList<Interagis> getAllInteragis();
-    public String getNameFamille(int a);
+    public String getNameFamille(int numFam);
+    public int getNumFamille(String nomFam);
     public ArrayList<MedicamentFamNom> getAllMedicamentWithFamName();
+    public void setMedicament(Medicament med);
+    public void setPrescrire(Prescrire prescrption);
+    public void setTypePersonne(TypeIndividu typePersonne);
+    public void setInteragis(int med1,int med2);
+    public int getIndexTypeIndividu();
+    public int getIndexMedicament();
+    public int getMatchedIndex(String medNom);
 }
