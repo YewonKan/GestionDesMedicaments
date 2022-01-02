@@ -42,12 +42,14 @@ public class frmPrescription extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        dosage = new javax.swing.JTextField();
+        txtdosage = new javax.swing.JTextField();
         btnPlus = new javax.swing.JButton();
         btnmoins = new javax.swing.JButton();
         cmbMedicament = new javax.swing.JComboBox<>();
         cmbTypePerso = new javax.swing.JComboBox<>();
         btnInsert = new javax.swing.JButton();
+        txtPosologie = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
@@ -97,6 +99,20 @@ public class frmPrescription extends javax.swing.JFrame
         });
 
         btnInsert.setText("inserer");
+        btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsertMouseClicked(evt);
+            }
+        });
+
+        txtPosologie.setText("jTextField1");
+        txtPosologie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPosologieActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("posologie");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,24 +121,30 @@ public class frmPrescription extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cmbTypePerso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnPlus)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(dosage, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnmoins)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cmbTypePerso, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnPlus)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtdosage, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnmoins)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96)
+                        .addComponent(txtPosologie, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,12 +160,16 @@ public class frmPrescription extends javax.swing.JFrame
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(dosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPlus)
                     .addComponent(btnmoins))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPosologie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInsert)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -172,26 +198,37 @@ public class frmPrescription extends javax.swing.JFrame
             cmbMedicament.addItem(ty.getTIlibelle());
         }
 
-        dosage.setText("0");
+        txtdosage.setText("0");
     }//GEN-LAST:event_formWindowOpened
 
     private void btnPlusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlusMouseClicked
-        int a = Integer.parseInt(dosage.getText());
+        int a = Integer.parseInt(txtdosage.getText());
         a = a + 1;
-        dosage.setText("a");
+        txtdosage.setText("a");
     }//GEN-LAST:event_btnPlusMouseClicked
 
     private void btnmoinsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmoinsMouseClicked
-        int a = Integer.parseInt(dosage.getText());
+        int a = Integer.parseInt(txtdosage.getText());
         if (a == 0) {
             JOptionPane.showMessageDialog(this, "dosage est déjà 0, nous ne pouvons pas soustraire");
         }
         else {
             a = a - 1;
-            dosage.setText("a");
+            txtdosage.setText("a");
         }
 
     }//GEN-LAST:event_btnmoinsMouseClicked
+
+    private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
+        cmbMedicament.getSelectedItem();
+        cmbTypePerso.getSelectedItem();
+        txtdosage.getText();
+        txtPosologie.getText();
+    }//GEN-LAST:event_btnInsertMouseClicked
+
+    private void txtPosologieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPosologieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPosologieActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,9 +272,11 @@ public class frmPrescription extends javax.swing.JFrame
     private javax.swing.JButton btnmoins;
     private javax.swing.JComboBox<String> cmbMedicament;
     private javax.swing.JComboBox<String> cmbTypePerso;
-    private javax.swing.JTextField dosage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField txtPosologie;
+    private javax.swing.JTextField txtdosage;
     // End of variables declaration//GEN-END:variables
 }
