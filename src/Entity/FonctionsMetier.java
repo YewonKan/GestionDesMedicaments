@@ -246,7 +246,7 @@ public class FonctionsMetier implements IMetier
 
     @Override
     public int getMatchedIndex(String medNom) {
-        int index;
+        int index = 0;
         try {
 
             maCnx = ConnexionBdd.getCnx();
