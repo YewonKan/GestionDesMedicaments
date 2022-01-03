@@ -107,7 +107,6 @@ public class frmPrescription extends javax.swing.JFrame
             }
         });
 
-        txtPosologie.setText("jTextField1");
         txtPosologie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPosologieActionPerformed(evt);
