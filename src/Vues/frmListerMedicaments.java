@@ -42,7 +42,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
         btnMedicament = new javax.swing.JRadioButton();
         btnTypePersnonne = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
         btnModifier = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,6 +77,11 @@ public class frmListerMedicaments extends javax.swing.JFrame
 
         buttonGroup1.add(btnTypePersnonne);
         btnTypePersnonne.setText("Type-Personne");
+        btnTypePersnonne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTypePersnonneMouseClicked(evt);
+            }
+        });
         btnTypePersnonne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTypePersnonneActionPerformed(evt);
@@ -85,8 +90,13 @@ public class frmListerMedicaments extends javax.swing.JFrame
 
         jPanel1.setBackground(new java.awt.Color(89, 136, 255));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_ZpF0AWG32d.png"))); // NOI18N
-        jButton1.setText("jButton1");
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_ZpF0AWG32d.png"))); // NOI18N
+        btnHome.setText("jButton1");
+        btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHomeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,14 +104,14 @@ public class frmListerMedicaments extends javax.swing.JFrame
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -126,7 +136,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addGap(183, 183, 183)
                 .addComponent(btnModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(474, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -154,14 +164,16 @@ public class frmListerMedicaments extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fm = new FonctionsMetier();
         ConnexionBdd cnx = new ConnexionBdd();
-        
+
         mdlMed = new ModelMedicament();
         mdlMed.loadDatas(fm.getAllMedicamentWithFamName());
         tblMedicament.setModel(mdlMed);
+
+        btnMedicament.setSelected(true);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnMedicamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentActionPerformed
-   
+
     }//GEN-LAST:event_btnMedicamentActionPerformed
 
     private void btnTypePersnonneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTypePersnonneActionPerformed
@@ -169,18 +181,30 @@ public class frmListerMedicaments extends javax.swing.JFrame
     }//GEN-LAST:event_btnTypePersnonneActionPerformed
 
     private void btnMedicamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedicamentMouseClicked
-       
+
     }//GEN-LAST:event_btnMedicamentMouseClicked
 
     private void btnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModifierActionPerformed
 
+    private void btnTypePersnonneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTypePersnonneMouseClicked
+        frmListerTypePers frm = new frmListerTypePers();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnTypePersnonneMouseClicked
+
+    private void btnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseClicked
+        frmMain frm = new frmMain();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnHomeMouseClicked
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run() {
@@ -189,15 +213,15 @@ public class frmListerMedicaments extends javax.swing.JFrame
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHome;
     private javax.swing.JRadioButton btnMedicament;
     private javax.swing.JButton btnModifier;
     private javax.swing.JRadioButton btnTypePersnonne;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblMedicament;

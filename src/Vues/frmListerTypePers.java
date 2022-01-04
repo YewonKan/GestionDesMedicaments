@@ -17,10 +17,10 @@ import Model.ModelPersonne;
 public class frmListerTypePers extends javax.swing.JFrame
 {
 
-     FonctionsMetier fm;
+    FonctionsMetier fm;
     ModelMedicament mdlMed;
     ModelPersonne mdlPersonne;
-    
+
     public frmListerTypePers() {
         initComponents();
     }
@@ -34,12 +34,13 @@ public class frmListerTypePers extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTypePersonne = new javax.swing.JTable();
         btnMedicament = new javax.swing.JRadioButton();
         btnTypePersnonne = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
         btnModifier = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,6 +60,7 @@ public class frmListerTypePers extends javax.swing.JFrame
         ));
         jScrollPane2.setViewportView(tblTypePersonne);
 
+        buttonGroup1.add(btnMedicament);
         btnMedicament.setText("medicament");
         btnMedicament.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -71,6 +73,7 @@ public class frmListerTypePers extends javax.swing.JFrame
             }
         });
 
+        buttonGroup1.add(btnTypePersnonne);
         btnTypePersnonne.setText("Type-Personne");
         btnTypePersnonne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,8 +83,13 @@ public class frmListerTypePers extends javax.swing.JFrame
 
         jPanel1.setBackground(new java.awt.Color(89, 136, 255));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_ZpF0AWG32d.png"))); // NOI18N
-        jButton4.setText("jButton1");
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_ZpF0AWG32d.png"))); // NOI18N
+        btnHome.setText("jButton1");
+        btnHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHomeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,14 +97,14 @@ public class frmListerTypePers extends javax.swing.JFrame
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -149,7 +157,9 @@ public class frmListerTypePers extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMedicamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedicamentMouseClicked
-
+        frmListerMedicaments frm = new frmListerMedicaments();
+        frm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnMedicamentMouseClicked
 
     private void btnMedicamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicamentActionPerformed
@@ -167,11 +177,19 @@ public class frmListerTypePers extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fm = new FonctionsMetier();
         ConnexionBdd cnx = new ConnexionBdd();
-        
+
         mdlPersonne = new ModelPersonne();
         mdlPersonne.loadDatas(fm.getAllIndividu());
         tblTypePersonne.setModel(mdlPersonne);
+
+        btnTypePersnonne.setSelected(true);
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseClicked
+        frmMain frm = new frmMain();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -210,10 +228,11 @@ public class frmListerTypePers extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHome;
     private javax.swing.JRadioButton btnMedicament;
     private javax.swing.JButton btnModifier;
     private javax.swing.JRadioButton btnTypePersnonne;
-    private javax.swing.JButton jButton4;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblTypePersonne;
