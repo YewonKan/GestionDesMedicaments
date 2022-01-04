@@ -5,6 +5,7 @@
  */
 package Vues;
 
+import Entity.ConnexionBdd;
 import Entity.FonctionsMetier;
 import Entity.TypeIndividu;
 
@@ -157,7 +158,10 @@ public class frmUser extends javax.swing.JFrame
     }//GEN-LAST:event_btnInsererMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtCode.setText(String.valueOf(fm.getIndexTypeIndividu()));
+        ConnexionBdd bdd = new ConnexionBdd();
+        fm = new FonctionsMetier();
+        txtCode.setText(String.valueOf(fm.getIndexTypeIndividu() + 1));
+        txtCode.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseClicked
