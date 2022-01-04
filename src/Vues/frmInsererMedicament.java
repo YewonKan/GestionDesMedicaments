@@ -241,6 +241,8 @@ public class frmInsererMedicament extends javax.swing.JFrame
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtDepot.setText(String.valueOf(fm.getIndexMedicament()));
+        txtDepot.setEditable(false);
+
     }//GEN-LAST:event_formWindowOpened
 
     private void txtFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFamActionPerformed

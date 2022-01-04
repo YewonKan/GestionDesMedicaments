@@ -39,6 +39,8 @@ public class frmInsererInteraction extends javax.swing.JFrame
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSelect1 = new javax.swing.JTable();
@@ -49,7 +51,6 @@ public class frmInsererInteraction extends javax.swing.JFrame
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        test = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -63,6 +64,10 @@ public class frmInsererInteraction extends javax.swing.JFrame
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -146,17 +151,11 @@ public class frmInsererInteraction extends javax.swing.JFrame
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        test.setText("jTextField1");
-        test.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnInserer, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,29 +163,21 @@ public class frmInsererInteraction extends javax.swing.JFrame
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
-                                .addComponent(jLabel1)
-                                .addGap(60, 60, 60)))
+                                .addComponent(jLabel1)))
+                        .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(test, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(301, 301, 301))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(test, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
@@ -204,7 +195,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fm = new FonctionsMetier();
         ConnexionBdd cnx = new ConnexionBdd();
-        
+
         mdlMed = new ModelMedicament();
         mdlMed.LoadDatsOnlyName(fm.getAllMedicament());
         tblSelect1.setModel(mdlMed);
@@ -212,7 +203,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
     }//GEN-LAST:event_formWindowOpened
 
     private void btnInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsererActionPerformed
-        
+
 
     }//GEN-LAST:event_btnInsererActionPerformed
 
@@ -225,41 +216,40 @@ public class frmInsererInteraction extends javax.swing.JFrame
     }//GEN-LAST:event_tblSelect2MouseClicked
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
-        String selectedMedNom1 = tblSelect1.getValueAt(tblSelect1.getSelectedRow(), 0).toString();
-        String selectedMedNom2 = tblSelect2.getValueAt(tblSelect2.getSelectedRow(), 0).toString();
-        int selectedMedIndex1 = fm.getMatchedIndex(selectedMedNom1);
-        int selectedMedIndex2 = fm.getMatchedIndex(selectedMedNom2);
-        
-        boolean exist = true;
-       
 
-        if (tblSelect1.getSelectedRowCount()==0 || tblSelect2.getSelectedRowCount()==0) {
-            JOptionPane.showMessageDialog(this, "Sélectionner des medicament dans deux table", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);           
-        }
-        else if (selectedMedIndex1 == selectedMedIndex1) {
-            JOptionPane.showMessageDialog(this, "Vous ne pouvez pas sélectionner la même médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+
+        if ((tblSelect1.getSelectedRowCount() == 0) || (tblSelect2.getSelectedRowCount() == 0)) {
+            JOptionPane.showMessageDialog(this, "Sélectionner des medicament dans deux tables", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            ArrayList<Interagis> lesInteragis = fm.getAllInteragis();
-            for (Interagis i : lesInteragis) {
-                if (i.getMedMedPerturbe() == selectedMedIndex1 && i.getMedPerturbateur() == selectedMedIndex2 || i.getMedMedPerturbe() == selectedMedIndex2 && i.getMedPerturbateur() == selectedMedIndex1) {
-                    exist = false;
-                }
-            }
+            String selectedMedNom1 = tblSelect1.getValueAt(tblSelect1.getSelectedRow(), 0).toString();
+            String selectedMedNom2 = tblSelect2.getValueAt(tblSelect2.getSelectedRow(), 0).toString();
+            int selectedMedIndex1 = fm.getMatchedIndex(selectedMedNom1);
+            int selectedMedIndex2 = fm.getMatchedIndex(selectedMedNom2);
 
-            if (exist) {
-                fm.setInteragis(selectedMedIndex1, selectedMedIndex2);
-                JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
+            if (selectedMedIndex1 == selectedMedIndex2) {
+                JOptionPane.showMessageDialog(this, "Vous ne pouvez pas sélectionner la même médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
             }
             else {
-                JOptionPane.showMessageDialog(this, "Cette interagis combination existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+                boolean exist = true;
+                ArrayList<Interagis> lesInteragis = fm.getAllInteragis();
+                
+                for (Interagis i : lesInteragis) {
+                    if (i.getMedMedPerturbe() == selectedMedIndex1 && i.getMedPerturbateur() == selectedMedIndex2 || i.getMedMedPerturbe() == selectedMedIndex2 && i.getMedPerturbateur() == selectedMedIndex1) {
+                        exist = false;
+                    }
+                }
+
+                if (exist) {
+                    fm.setInteragis(selectedMedIndex1, selectedMedIndex2);
+                    JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Cette interagis combination existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }//GEN-LAST:event_btnInsererMouseClicked
-
-    private void testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_testActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,11 +295,12 @@ public class frmInsererInteraction extends javax.swing.JFrame
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblSelect1;
     private javax.swing.JTable tblSelect2;
-    private javax.swing.JTextField test;
     // End of variables declaration//GEN-END:variables
 }

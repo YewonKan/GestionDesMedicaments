@@ -126,11 +126,9 @@ public class FonctionsMetier implements IMetier
 
             maCnx = ConnexionBdd.getCnx();
             ps = maCnx.prepareStatement("insert into medicament(MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON) values(" + med.getCdFamMedicament() + "," + med.getComposition() + "," + med.getEffet() + "," + med.getContreIndic() + "," + med.getPrix() + ")");
-            rs = ps.executeQuery();
+            ps.executeUpdate();
 
-            if (rs.next()) {
-                // should we return value to check if this action was executed well (= not void function)
-            }
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,11 +141,9 @@ public class FonctionsMetier implements IMetier
 
             maCnx = ConnexionBdd.getCnx();
             ps = maCnx.prepareStatement("insert into prescrire(MED_DEPOTLEGAL,TIN_CODE,DOS_CODE,PRE_POSOLOGIE) values(" + prescrption.getIdMedicament() + "," + prescrption.getTICode() + "," + prescrption.getDoseCode() + "," + prescrption.getPrePosologie() + ")");
-            rs = ps.executeQuery();
+            ps.executeUpdate();
 
-            if (rs.next()) {
-                // should we return value to check if this action was executed well (= not void function)
-            }
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
@@ -160,11 +156,8 @@ public class FonctionsMetier implements IMetier
 
             maCnx = ConnexionBdd.getCnx();
             ps = maCnx.prepareStatement("insert into type_individu(TIN_LIBELLE) values(" + typePersonne.getTIlibelle() + ")");
-            rs = ps.executeQuery();
+            ps.executeUpdate();
 
-            if (rs.next()) {
-                // should we return value to check if this action was executed well (= not void function)
-            }
 
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,12 +209,9 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("insert into interagis(TIN_LIBELLE) values() ");
-            rs = ps.executeQuery();
+            ps = maCnx.prepareStatement("insert into interagis(MED_PERTURBATEUR,MED_MED_PERTURBE) values("+med1+","+med2+")");
+            ps.executeUpdate();
 
-            if (rs.next()) {
-                // should we return value to check if this action was executed well (= not void function)
-            }
 
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
