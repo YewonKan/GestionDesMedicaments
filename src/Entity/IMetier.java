@@ -11,7 +11,6 @@ public interface IMetier {
     public ArrayList<Medicament> getAllMedicament();
     public ArrayList<TypeIndividu> getAllIndividu();
     public ArrayList<Interagis> getAllInteragis();
-    public String getNameFamille(int numFam);
     public int getNumFamille(String nomFam);
     public ArrayList<MedicamentFamNom> getAllMedicamentWithFamName();
     public void setMedicament(Medicament med);

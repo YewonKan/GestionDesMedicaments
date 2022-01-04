@@ -78,24 +78,7 @@ public class FonctionsMetier implements IMetier
         return lesInteragis;
     }
 
-    @Override
-    public String getNameFamille(int numFam) {
-        String FamilyName = null;
-        //if you don't find any FamilyName match with Name, return null so we have to block
-        try {
-
-            maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("select FAM_LIBELLE from famille where FAM_CODE = " + numFam + ";");
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-                FamilyName = (rs.getNString(1));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return FamilyName;
-    }
+    
 
     @Override
     public int getNumFamille(String nomFam) {
@@ -123,12 +106,12 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON from medicament");
+            ps = maCnx.prepareStatement("select m.MED_DEPOTLEGAL, m.MED_NOMCOMMERCIAL,f.FAM_LIBELLE, m.MED_COMPOSITION, m.MED_EFFETS, m.MED_CONTREINDIC, m.MED_PRIXECHANTILLON from medicament m LEFT JOIN famille f ON m.FAM_CODE = f.FAM_CODE");
+            
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                FamilyName = getNameFamille(rs.getInt(3));
-                MedicamentFamNom m = new MedicamentFamNom(rs.getInt(1), rs.getString(2), FamilyName, rs.getString(4), rs.getString(5), rs.getString(6), rs.getFloat(7));
+                MedicamentFamNom m = new MedicamentFamNom(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getFloat(7));
                 mesMedicaments.add(m);
             }
         } catch (SQLException ex) {
