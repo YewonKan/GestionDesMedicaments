@@ -5,6 +5,7 @@
  */
 package Vues;
 
+import Entity.ConnexionBdd;
 import Entity.FonctionsMetier;
 import Entity.Medicament;
 
@@ -265,7 +266,10 @@ public class frmInsererMedicament extends javax.swing.JFrame
     }//GEN-LAST:event_txtInterdictionActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        txtDepot.setText(String.valueOf(fm.getIndexMedicament()));
+        ConnexionBdd bdd = new ConnexionBdd();
+        fm = new FonctionsMetier();
+        txtDepot.setText(String.valueOf(fm.getIndexMedicament() + 1));
+        txtDepot.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void txtFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFamActionPerformed
@@ -274,14 +278,14 @@ public class frmInsererMedicament extends javax.swing.JFrame
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseClicked
         // TODO add your handling code here:
-          frmMain frm = new frmMain();
-          frm.setVisible(true);
-          dispose();
+        frmMain frm = new frmMain();
+        frm.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnHomeMouseClicked
 
     /**

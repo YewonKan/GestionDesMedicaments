@@ -78,8 +78,6 @@ public class FonctionsMetier implements IMetier
         return lesInteragis;
     }
 
-    
-
     @Override
     public int getNumFamille(String nomFam) {
         int FamilyNum = 0;
@@ -107,7 +105,7 @@ public class FonctionsMetier implements IMetier
 
             maCnx = ConnexionBdd.getCnx();
             ps = maCnx.prepareStatement("select m.MED_DEPOTLEGAL, m.MED_NOMCOMMERCIAL,f.FAM_LIBELLE, m.MED_COMPOSITION, m.MED_EFFETS, m.MED_CONTREINDIC, m.MED_PRIXECHANTILLON from medicament m LEFT JOIN famille f ON m.FAM_CODE = f.FAM_CODE");
-            
+
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -126,7 +124,7 @@ public class FonctionsMetier implements IMetier
 
             maCnx = ConnexionBdd.getCnx();
             ps = maCnx.prepareStatement("insert into medicament(MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON) values(" + med.getCdFamMedicament() + "," + med.getComposition() + "," + med.getEffet() + "," + med.getContreIndic() + "," + med.getPrix() + ")");
-            rs = ps.executeQuery();
+            ps.executeUpdate();
 
             if (rs.next()) {
                 // should we return value to check if this action was executed well (= not void function)
@@ -143,7 +141,7 @@ public class FonctionsMetier implements IMetier
 
             maCnx = ConnexionBdd.getCnx();
             ps = maCnx.prepareStatement("insert into prescrire(MED_DEPOTLEGAL,TIN_CODE,DOS_CODE,PRE_POSOLOGIE) values(" + prescrption.getIdMedicament() + "," + prescrption.getTICode() + "," + prescrption.getDoseCode() + "," + prescrption.getPrePosologie() + ")");
-            rs = ps.executeQuery();
+            ps.executeUpdate();
 
             if (rs.next()) {
                 // should we return value to check if this action was executed well (= not void function)
@@ -160,7 +158,7 @@ public class FonctionsMetier implements IMetier
 
             maCnx = ConnexionBdd.getCnx();
             ps = maCnx.prepareStatement("insert into type_individu(TIN_LIBELLE) values(" + typePersonne.getTIlibelle() + ")");
-            rs = ps.executeQuery();
+            ps.executeUpdate();
 
             if (rs.next()) {
                 // should we return value to check if this action was executed well (= not void function)
@@ -209,15 +207,13 @@ public class FonctionsMetier implements IMetier
         return indexMedicine;
     }
 
-
-
     @Override
     public void setInteragis(int med1, int med2) {
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("insert into interagis(TIN_LIBELLE) values() ");
-            rs = ps.executeQuery();
+            ps = maCnx.prepareStatement("insert into interagis(MED_PERTURBATEUR,MED_MED_PERTURBE) values(" + med1 + "," + med2 + ")");
+            ps.executeUpdate();
 
             if (rs.next()) {
                 // should we return value to check if this action was executed well (= not void function)
@@ -238,7 +234,7 @@ public class FonctionsMetier implements IMetier
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                if(medNom.compareTo(rs.getString(2))==0){
+                if (medNom.compareTo(rs.getString(2)) == 0) {
                     index = Integer.parseInt(rs.getString(1));
                 }
             }

@@ -217,7 +217,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fm = new FonctionsMetier();
         ConnexionBdd cnx = new ConnexionBdd();
-        
+
         mdlMed = new ModelMedicament();
         mdlMed.LoadDatsOnlyName(fm.getAllMedicament());
         tblSelect1.setModel(mdlMed);
@@ -225,7 +225,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
     }//GEN-LAST:event_formWindowOpened
 
     private void btnInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsererActionPerformed
-        
+
 
     }//GEN-LAST:event_btnInsererActionPerformed
 
@@ -238,34 +238,35 @@ public class frmInsererInteraction extends javax.swing.JFrame
     }//GEN-LAST:event_tblSelect2MouseClicked
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
-        String selectedMedNom1 = tblSelect1.getValueAt(tblSelect1.getSelectedRow(), 0).toString();
-        String selectedMedNom2 = tblSelect2.getValueAt(tblSelect2.getSelectedRow(), 0).toString();
-        int selectedMedIndex1 = fm.getMatchedIndex(selectedMedNom1);
-        int selectedMedIndex2 = fm.getMatchedIndex(selectedMedNom2);
-        
-        boolean exist = true;
-       
-
-        if (tblSelect1.getSelectedRowCount()==0 || tblSelect2.getSelectedRowCount()==0) {
-            JOptionPane.showMessageDialog(this, "Sélectionner des medicament dans deux table", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);           
-        }
-        else if (selectedMedIndex1 == selectedMedIndex1) {
-            JOptionPane.showMessageDialog(this, "Vous ne pouvez pas sélectionner la même médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        if ((tblSelect1.getSelectedRowCount() == 0) || (tblSelect2.getSelectedRowCount() == 0)) {
+            JOptionPane.showMessageDialog(this, "Sélectionner des medicament dans deux tables", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            ArrayList<Interagis> lesInteragis = fm.getAllInteragis();
-            for (Interagis i : lesInteragis) {
-                if (i.getMedMedPerturbe() == selectedMedIndex1 && i.getMedPerturbateur() == selectedMedIndex2 || i.getMedMedPerturbe() == selectedMedIndex2 && i.getMedPerturbateur() == selectedMedIndex1) {
-                    exist = false;
-                }
-            }
+            String selectedMedNom1 = tblSelect1.getValueAt(tblSelect1.getSelectedRow(), 0).toString();
+            String selectedMedNom2 = tblSelect2.getValueAt(tblSelect2.getSelectedRow(), 0).toString();
+            int selectedMedIndex1 = fm.getMatchedIndex(selectedMedNom1);
+            int selectedMedIndex2 = fm.getMatchedIndex(selectedMedNom2);
 
-            if (exist) {
-                fm.setInteragis(selectedMedIndex1, selectedMedIndex2);
-                JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
+            if (selectedMedIndex1 == selectedMedIndex2) {
+                JOptionPane.showMessageDialog(this, "Vous ne pouvez pas sélectionner la même médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
             }
             else {
-                JOptionPane.showMessageDialog(this, "Cette interagis combination existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+                boolean exist = true;
+                ArrayList<Interagis> lesInteragis = fm.getAllInteragis();
+
+                for (Interagis i : lesInteragis) {
+                    if (i.getMedMedPerturbe() == selectedMedIndex1 && i.getMedPerturbateur() == selectedMedIndex2 || i.getMedMedPerturbe() == selectedMedIndex2 && i.getMedPerturbateur() == selectedMedIndex1) {
+                        exist = false;
+                    }
+                }
+
+                if (exist) {
+                    fm.setInteragis(selectedMedIndex1, selectedMedIndex2);
+                    JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "Cette interagis combination existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }//GEN-LAST:event_btnInsererMouseClicked

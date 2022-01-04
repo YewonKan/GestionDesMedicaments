@@ -8,6 +8,7 @@ package Vues;
 import Entity.ConnexionBdd;
 import Entity.FonctionsMetier;
 import Entity.Medicament;
+import Entity.Prescrire;
 import Entity.TypeIndividu;
 import Model.ModelMedicament;
 import Model.ModelPersonne;
@@ -274,10 +275,24 @@ public class frmPrescription extends javax.swing.JFrame
     }//GEN-LAST:event_btnmoinsMouseClicked
 
     private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
-        cmbMedicament.getSelectedItem();
-        cmbTypePerso.getSelectedItem();
-        txtdosage.getText();
-        txtPosologie.getText();
+        
+        if (txtdosage.getText().compareTo("0") == 0) {
+            JOptionPane.showMessageDialog(this, "Inserer un dosage", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (txtPosologie.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Ecrire la frequence de la prise du medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            int MedicamentIndex = cmbMedicament.getSelectedIndex() + 1;
+            int TypeIndex = cmbTypePerso.getSelectedIndex() + 1;
+            int userDosage = Integer.parseInt(txtdosage.getText());
+            String userPosologie = txtPosologie.getText();
+            Prescrire userPrescription = new Prescrire(MedicamentIndex, TypeIndex, userDosage, userPosologie);
+            fm.setPrescrire(userPrescription);
+            JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btnInsertMouseClicked
 
     private void txtPosologieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPosologieActionPerformed
