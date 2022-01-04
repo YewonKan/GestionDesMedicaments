@@ -49,6 +49,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        test = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -145,6 +146,13 @@ public class frmInsererInteraction extends javax.swing.JFrame
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        test.setText("jTextField1");
+        test.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,12 +175,18 @@ public class frmInsererInteraction extends javax.swing.JFrame
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(test, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(301, 301, 301))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(test, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
@@ -217,8 +231,9 @@ public class frmInsererInteraction extends javax.swing.JFrame
         int selectedMedIndex2 = fm.getMatchedIndex(selectedMedNom2);
         
         boolean exist = true;
+       
 
-        if (selectedMedNom1.compareTo("")==0 ) {
+        if (tblSelect1.getSelectedRowCount()==0 || tblSelect2.getSelectedRowCount()==0) {
             JOptionPane.showMessageDialog(this, "Sélectionner des medicament dans deux table", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);           
         }
         else if (selectedMedIndex1 == selectedMedIndex1) {
@@ -234,13 +249,17 @@ public class frmInsererInteraction extends javax.swing.JFrame
 
             if (exist) {
                 fm.setInteragis(selectedMedIndex1, selectedMedIndex2);
-                JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
             }
             else {
                 JOptionPane.showMessageDialog(this, "Cette interagis combination existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnInsererMouseClicked
+
+    private void testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_testActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,5 +310,6 @@ public class frmInsererInteraction extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblSelect1;
     private javax.swing.JTable tblSelect2;
+    private javax.swing.JTextField test;
     // End of variables declaration//GEN-END:variables
 }
