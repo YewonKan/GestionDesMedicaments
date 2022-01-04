@@ -39,7 +39,7 @@ public class ModelMedicament extends AbstractTableModel {
     
     public void loadDatas(ArrayList<MedicamentFamNom> lesMedicaments)
     {
-        nomsColonnes = new String[]{"Numéro ticket","Nom ticket","Date","Etat"};
+        nomsColonnes = new String[]{"INDEX","NOM COMMERCIAL","NOM DE FAMILLE","COMPOSITION","EFFET","PRIX"};
         rows = new Vector<>();
         
         for(MedicamentFamNom med : lesMedicaments)

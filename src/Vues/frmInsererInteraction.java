@@ -47,6 +47,8 @@ public class frmInsererInteraction extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         btnInserer = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -103,6 +105,11 @@ public class frmInsererInteraction extends javax.swing.JFrame
         jLabel3.setText("SELECTION");
 
         btnInserer.setText("INSERER");
+        btnInserer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInsererMouseClicked(evt);
+            }
+        });
         btnInserer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInsererActionPerformed(evt);
@@ -111,15 +118,31 @@ public class frmInsererInteraction extends javax.swing.JFrame
 
         jPanel2.setBackground(new java.awt.Color(89, 136, 255));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_ZpF0AWG32d.png"))); // NOI18N
+        jButton1.setText("jButton1");
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_hHjAoTrSx1.png"))); // NOI18N
+        jButton2.setText("jButton2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 36, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,15 +153,15 @@ public class frmInsererInteraction extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnInserer, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(70, 70, 70))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGap(60, 60, 60)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -149,7 +172,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
@@ -175,6 +198,19 @@ public class frmInsererInteraction extends javax.swing.JFrame
     }//GEN-LAST:event_formWindowOpened
 
     private void btnInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsererActionPerformed
+        
+
+    }//GEN-LAST:event_btnInsererActionPerformed
+
+    private void tblSelect1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelect1MouseClicked
+        tblSelect1.setSelectionBackground(Color.PINK);
+    }//GEN-LAST:event_tblSelect1MouseClicked
+
+    private void tblSelect2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelect2MouseClicked
+        tblSelect2.setSelectionBackground(Color.PINK);
+    }//GEN-LAST:event_tblSelect2MouseClicked
+
+    private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
         String selectedMedNom1 = tblSelect1.getValueAt(tblSelect1.getSelectedRow(), 0).toString();
         String selectedMedNom2 = tblSelect2.getValueAt(tblSelect2.getSelectedRow(), 0).toString();
         int selectedMedIndex1 = fm.getMatchedIndex(selectedMedNom1);
@@ -182,8 +218,8 @@ public class frmInsererInteraction extends javax.swing.JFrame
         
         boolean exist = true;
 
-        if (tblSelect1.getSelectionModel().isSelectionEmpty() || tblSelect2.getSelectionModel().isSelectionEmpty()) {
-            JOptionPane.showMessageDialog(this, "Sélectionner des medicament dans deux table", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        if (selectedMedNom1.compareTo("")==0 ) {
+            JOptionPane.showMessageDialog(this, "Sélectionner des medicament dans deux table", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);           
         }
         else if (selectedMedIndex1 == selectedMedIndex1) {
             JOptionPane.showMessageDialog(this, "Vous ne pouvez pas sélectionner la même médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
@@ -204,17 +240,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
                 JOptionPane.showMessageDialog(this, "Cette interagis combination existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-
-    }//GEN-LAST:event_btnInsererActionPerformed
-
-    private void tblSelect1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelect1MouseClicked
-        tblSelect1.setSelectionBackground(Color.PINK);
-    }//GEN-LAST:event_tblSelect1MouseClicked
-
-    private void tblSelect2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelect2MouseClicked
-        tblSelect2.setSelectionBackground(Color.PINK);
-    }//GEN-LAST:event_tblSelect2MouseClicked
+    }//GEN-LAST:event_btnInsererMouseClicked
 
     /**
      * @param args the command line arguments
@@ -255,6 +281,8 @@ public class frmInsererInteraction extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInserer;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
