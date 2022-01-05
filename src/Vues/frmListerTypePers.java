@@ -9,6 +9,7 @@ import Entity.ConnexionBdd;
 import Entity.FonctionsMetier;
 import Model.ModelMedicament;
 import Model.ModelPersonne;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -127,6 +128,11 @@ public class frmListerTypePers extends javax.swing.JFrame
         jScrollPane2.setViewportView(tblTypePersonne);
 
         btnModifier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_jyONPH5W2D.png"))); // NOI18N
+        btnModifier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnModifierMouseClicked(evt);
+            }
+        });
         btnModifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModifierActionPerformed(evt);
@@ -216,6 +222,19 @@ public class frmListerTypePers extends javax.swing.JFrame
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHomeMouseClicked
+
+    private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
+         if (tblTypePersonne.getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Saisir", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+           
+            int indexType = Integer.parseInt(tblTypePersonne.getValueAt(tblTypePersonne.getSelectedRow(), 0).toString());
+            frmModifMedicament frm = new frmModifMedicament(indexType);
+            frm.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnModifierMouseClicked
 
     /**
      * @param args the command line arguments

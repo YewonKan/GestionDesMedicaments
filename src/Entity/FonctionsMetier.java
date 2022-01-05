@@ -126,10 +126,6 @@ public class FonctionsMetier implements IMetier
             ps = maCnx.prepareStatement("insert into medicament(MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON) values(" + med.getCdFamMedicament() + "," + med.getComposition() + "," + med.getEffet() + "," + med.getContreIndic() + "," + med.getPrix() + ")");
             ps.executeUpdate();
 
-            if (rs.next()) {
-                // should we return value to check if this action was executed well (= not void function)
-            }
-
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -143,10 +139,6 @@ public class FonctionsMetier implements IMetier
             ps = maCnx.prepareStatement("insert into prescrire(MED_DEPOTLEGAL,TIN_CODE,DOS_CODE,PRE_POSOLOGIE) values(" + prescrption.getIdMedicament() + "," + prescrption.getTICode() + "," + prescrption.getDoseCode() + "," + prescrption.getPrePosologie() + ")");
             ps.executeUpdate();
 
-            if (rs.next()) {
-                // should we return value to check if this action was executed well (= not void function)
-            }
-
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -159,10 +151,6 @@ public class FonctionsMetier implements IMetier
             maCnx = ConnexionBdd.getCnx();
             ps = maCnx.prepareStatement("insert into type_individu(TIN_LIBELLE) values(" + typePersonne.getTIlibelle() + ")");
             ps.executeUpdate();
-
-            if (rs.next()) {
-                // should we return value to check if this action was executed well (= not void function)
-            }
 
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
@@ -215,10 +203,6 @@ public class FonctionsMetier implements IMetier
             ps = maCnx.prepareStatement("insert into interagis(MED_PERTURBATEUR,MED_MED_PERTURBE) values(" + med1 + "," + med2 + ")");
             ps.executeUpdate();
 
-            if (rs.next()) {
-                // should we return value to check if this action was executed well (= not void function)
-            }
-
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -244,4 +228,33 @@ public class FonctionsMetier implements IMetier
         return (index);
     }
 
+    @Override
+    public void ModifierMedicament(Medicament med) {
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("UPDATE medicament SET MED_NOMCOMMERCIAL= '"+med.getNomMedicament()+"', FAM_CODE = '"+med.getCdFamMedicament()+"',MED_COMPOSITION='"+med.getComposition()+"',MED_EFFETS = '"+med.getEffet()+"', MED_CONTREINDIC = '"+med.getContreIndic()+"',MED_PRIXECHANTILLON = '"+ "WHERE CustomerID = '"+med.getIdMedicament()+"'");
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void ModifierTypePerson(TypeIndividu type) {
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("UPDATE type_individu SET TIN_LIBELLE= '"+type.getTIlibelle()+"WHERE TIN_CODE = '"+type.getTIcode()+"'");
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+
+  
+  
 }
