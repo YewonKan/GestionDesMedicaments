@@ -228,9 +228,8 @@ public class frmListerTypePers extends javax.swing.JFrame
             JOptionPane.showMessageDialog(this, "Saisir", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
-           
             int indexType = Integer.parseInt(tblTypePersonne.getValueAt(tblTypePersonne.getSelectedRow(), 0).toString());
-            frmModifMedicament frm = new frmModifMedicament(indexType);
+            frmModifUser frm = new frmModifUser(indexType);
             frm.setVisible(true);
             dispose();
         }

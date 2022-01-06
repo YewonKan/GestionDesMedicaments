@@ -236,7 +236,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
 
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
         if (tblMedicament.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "Saisir", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Choisir le Medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
            

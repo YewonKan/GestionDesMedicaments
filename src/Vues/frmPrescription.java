@@ -244,7 +244,6 @@ public class frmPrescription extends javax.swing.JFrame
         fm = new FonctionsMetier();
         ConnexionBdd cnx = new ConnexionBdd();
 
-        
         for (Medicament md : fm.getAllMedicament()) {
             cmbMedicament.addItem(md.getNomMedicament());
         }
@@ -265,7 +264,7 @@ public class frmPrescription extends javax.swing.JFrame
     private void btnmoinsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmoinsMouseClicked
         int a = Integer.parseInt(txtdosage.getText());
         if (a == 0) {
-            JOptionPane.showMessageDialog(this, "dosage est déjà 0, nous ne pouvons pas soustraire");
+            JOptionPane.showMessageDialog(this, "dosage est déjà 0, nous ne pouvons pas soustraire", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             a = a - 1;
@@ -275,7 +274,7 @@ public class frmPrescription extends javax.swing.JFrame
     }//GEN-LAST:event_btnmoinsMouseClicked
 
     private void btnInsertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertMouseClicked
-        
+
         if (txtdosage.getText().compareTo("0") == 0) {
             JOptionPane.showMessageDialog(this, "Inserer un dosage", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }

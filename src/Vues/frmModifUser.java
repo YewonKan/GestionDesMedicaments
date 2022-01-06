@@ -5,8 +5,11 @@
  */
 package Vues;
 
+import Entity.ConnexionBdd;
 import Entity.FonctionsMetier;
 import Entity.TypeIndividu;
+import com.sun.jdi.connect.spi.Connection;
+import javax.swing.JOptionPane;
 
 public class frmModifUser extends javax.swing.JFrame
 {
@@ -15,8 +18,15 @@ public class frmModifUser extends javax.swing.JFrame
      * Creates new form frmModifUser
      */
     FonctionsMetier fm;
-    public frmModifUser() {
+    int SelectedType;
+
+    public frmModifUser(int indexType) {
         initComponents();
+        SelectedType = indexType;
+    }
+
+    private frmModifUser() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -39,11 +49,12 @@ public class frmModifUser extends javax.swing.JFrame
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCode1 = new javax.swing.JTextField();
-        txtType1 = new javax.swing.JTextField();
+        txtCodeType = new javax.swing.JTextField();
+        txtTypeType = new javax.swing.JTextField();
         btnInserer1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnHome1 = new javax.swing.JButton();
+        btnMoveToList = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -128,6 +139,11 @@ public class frmModifUser extends javax.swing.JFrame
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -161,8 +177,8 @@ public class frmModifUser extends javax.swing.JFrame
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtType1)
-                    .addComponent(txtCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTypeType)
+                    .addComponent(txtCodeType, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(104, 104, 104))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -175,11 +191,11 @@ public class frmModifUser extends javax.swing.JFrame
                 .addGap(66, 66, 66)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtCode1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodeType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(txtType1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTypeType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addComponent(btnInserer1)
                 .addContainerGap(70, Short.MAX_VALUE))
@@ -194,6 +210,15 @@ public class frmModifUser extends javax.swing.JFrame
             }
         });
 
+        btnMoveToList.setBackground(new java.awt.Color(89, 136, 255));
+        btnMoveToList.setForeground(new java.awt.Color(89, 136, 255));
+        btnMoveToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/backToList.png"))); // NOI18N
+        btnMoveToList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMoveToListMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -201,13 +226,17 @@ public class frmModifUser extends javax.swing.JFrame
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnHome1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMoveToList, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHome1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnMoveToList)
+                    .addComponent(btnHome1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -248,9 +277,20 @@ public class frmModifUser extends javax.swing.JFrame
     }//GEN-LAST:event_btnHomeMouseClicked
 
     private void btnInserer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInserer1MouseClicked
-        String userLabel = txtType.getText();
-        TypeIndividu userInputType = new TypeIndividu(0, userLabel);
-        fm.setTypePersonne(userInputType);
+
+        if (txtType.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Ecrire label s'il vous plaît", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+
+        }
+        else {
+            int TypeIndex = Integer.parseInt(txtCode.getText());
+            String userLabel = txtType.getText();
+            TypeIndividu userInputType = new TypeIndividu(TypeIndex, userLabel);
+            fm.ModifierTypePerson(userInputType);
+            
+            JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
+
+        }
     }//GEN-LAST:event_btnInserer1MouseClicked
 
     private void btnInserer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserer1ActionPerformed
@@ -262,6 +302,18 @@ public class frmModifUser extends javax.swing.JFrame
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHome1MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ConnexionBdd cnx = new ConnexionBdd();
+        txtCodeType.setText(String.valueOf(SelectedType));
+        txtCodeType.setEnabled(false);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnMoveToListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMoveToListMouseClicked
+        frmListerTypePers frm = new frmListerTypePers();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMoveToListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -304,6 +356,7 @@ public class frmModifUser extends javax.swing.JFrame
     private javax.swing.JButton btnHome1;
     private javax.swing.JButton btnInserer;
     private javax.swing.JButton btnInserer1;
+    private javax.swing.JButton btnMoveToList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -313,8 +366,8 @@ public class frmModifUser extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField txtCode;
-    private javax.swing.JTextField txtCode1;
+    private javax.swing.JTextField txtCodeType;
     private javax.swing.JTextField txtType;
-    private javax.swing.JTextField txtType1;
+    private javax.swing.JTextField txtTypeType;
     // End of variables declaration//GEN-END:variables
 }

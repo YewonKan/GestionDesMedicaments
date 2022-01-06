@@ -6,31 +6,29 @@
 package Vues;
 
 import Entity.ConnexionBdd;
+import Entity.Famille;
 import Entity.FonctionsMetier;
 import Entity.Medicament;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author 82103
- */
 public class frmModifMedicament extends javax.swing.JFrame
 {
 
     /**
      * Creates new form frmModifMedicament
+     *
      * @param indexMed
      */
     FonctionsMetier fm;
     int SelectedMed;
-    
+
     public frmModifMedicament(int indexMed) {
         SelectedMed = indexMed;
         initComponents();
     }
 
     private frmModifMedicament() {
-          }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +41,7 @@ public class frmModifMedicament extends javax.swing.JFrame
 
         jPanel2 = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
+        btnMoveToList = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         txtInterdiction = new javax.swing.JTextField();
         txtprix = new javax.swing.JTextField();
@@ -53,12 +52,12 @@ public class frmModifMedicament extends javax.swing.JFrame
         jLabel5 = new javax.swing.JLabel();
         txtDepot = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtFam = new javax.swing.JTextField();
         txtCompo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtEffet = new javax.swing.JTextField();
         txtNomCommercial = new javax.swing.JTextField();
         btnInserer = new javax.swing.JButton();
+        cmbFam = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -81,6 +80,15 @@ public class frmModifMedicament extends javax.swing.JFrame
             }
         });
 
+        btnMoveToList.setBackground(new java.awt.Color(89, 136, 255));
+        btnMoveToList.setForeground(new java.awt.Color(89, 136, 255));
+        btnMoveToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/backToList.png"))); // NOI18N
+        btnMoveToList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMoveToListMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -88,13 +96,17 @@ public class frmModifMedicament extends javax.swing.JFrame
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMoveToList, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnMoveToList)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -130,12 +142,6 @@ public class frmModifMedicament extends javax.swing.JFrame
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("Prix");
 
-        txtFam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFamActionPerformed(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel7.setText("Nom Commercial");
 
@@ -157,10 +163,10 @@ public class frmModifMedicament extends javax.swing.JFrame
                         .addGap(5, 5, 5)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(53, 53, 53))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -173,9 +179,9 @@ public class frmModifMedicament extends javax.swing.JFrame
                     .addComponent(txtInterdiction)
                     .addComponent(txtprix)
                     .addComponent(txtNomCommercial, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                    .addComponent(txtFam)
                     .addComponent(txtCompo)
-                    .addComponent(txtDepot))
+                    .addComponent(txtDepot)
+                    .addComponent(cmbFam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(81, 81, 81))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,11 +199,11 @@ public class frmModifMedicament extends javax.swing.JFrame
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtNomCommercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(cmbFam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCompo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -231,7 +237,7 @@ public class frmModifMedicament extends javax.swing.JFrame
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -256,28 +262,29 @@ public class frmModifMedicament extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDepotActionPerformed
 
-    private void txtFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFamActionPerformed
-
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
 
-        String unNomMedicament = txtNomCommercial.getText();
-        String nomFamMedicament = txtFam.getText();
-        String unComposition = txtCompo.getText();
-        String unEffet = txtEffet.getText();
-        String unContreIndic = txtInterdiction.getText();
-        Float unPrix = Float.parseFloat(txtprix.getText());
-
-        int numFam = fm.getNumFamille(nomFamMedicament);
-
-         Medicament userInputMedicament = new Medicament(SelectedMed, unNomMedicament, numFam, unComposition, unEffet, unContreIndic, unPrix);
-
-        if(unNomMedicament.compareTo("")==0||nomFamMedicament.compareTo("")==0||unComposition.compareTo("")==0||unEffet.compareTo("")==0||unContreIndic.compareTo("")==0||txtprix.getText().compareTo("")==0){
+        if (txtNomCommercial.getText().compareTo("") == 0 ||  txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Ecrire les information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
-        
         }
-        fm.ModifierMedicament(userInputMedicament);
+        else {
+            // condition if its int, String etc 
+            
+            String unNomMedicament = txtNomCommercial.getText();
+            String nomFamMedicament = fm.getNomFamille(cmbFam.getSelectedIndex()+1);
+            String unComposition = txtCompo.getText();
+            String unEffet = txtEffet.getText();
+            String unContreIndic = txtInterdiction.getText();
+            Float unPrix = Float.parseFloat(txtprix.getText());
+
+            int numFam = fm.getNumFamille(nomFamMedicament);
+
+            Medicament userInputMedicament = new Medicament(SelectedMed, unNomMedicament, numFam, unComposition, unEffet, unContreIndic, unPrix);
+
+            fm.ModifierMedicament(userInputMedicament);
+            JOptionPane.showMessageDialog(this, "Suceed", "Suceed", JOptionPane.INFORMATION_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_btnInsererMouseClicked
 
@@ -286,7 +293,16 @@ public class frmModifMedicament extends javax.swing.JFrame
         fm = new FonctionsMetier();
         txtDepot.setText(String.valueOf(SelectedMed));
         txtDepot.setEnabled(false);
+        for (Famille f : fm.getAllFamille()) {
+            cmbFam.addItem(f.getFamLibelle());
+        }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnMoveToListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMoveToListMouseClicked
+        frmListerMedicaments frm = new frmListerMedicaments();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMoveToListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -327,6 +343,8 @@ public class frmModifMedicament extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnInserer;
+    private javax.swing.JButton btnMoveToList;
+    private javax.swing.JComboBox<String> cmbFam;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -339,7 +357,6 @@ public class frmModifMedicament extends javax.swing.JFrame
     private javax.swing.JTextField txtCompo;
     private javax.swing.JTextField txtDepot;
     private javax.swing.JTextField txtEffet;
-    private javax.swing.JTextField txtFam;
     private javax.swing.JTextField txtInterdiction;
     private javax.swing.JTextField txtNomCommercial;
     private javax.swing.JTextField txtprix;

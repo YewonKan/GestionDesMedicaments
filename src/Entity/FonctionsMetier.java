@@ -233,7 +233,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("UPDATE medicament SET MED_NOMCOMMERCIAL= '"+med.getNomMedicament()+"', FAM_CODE = '"+med.getCdFamMedicament()+"',MED_COMPOSITION='"+med.getComposition()+"',MED_EFFETS = '"+med.getEffet()+"', MED_CONTREINDIC = '"+med.getContreIndic()+"',MED_PRIXECHANTILLON = '"+ "WHERE CustomerID = '"+med.getIdMedicament()+"'");
+            ps = maCnx.prepareStatement("UPDATE medicament SET MED_NOMCOMMERCIAL= '" + med.getNomMedicament() + "', FAM_CODE = '" + med.getCdFamMedicament() + "',MED_COMPOSITION='" + med.getComposition() + "',MED_EFFETS = '" + med.getEffet() + "', MED_CONTREINDIC = '" + med.getContreIndic() + "',MED_PRIXECHANTILLON = '" + "WHERE CustomerID = '" + med.getIdMedicament() + "'");
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -246,15 +246,50 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("UPDATE type_individu SET TIN_LIBELLE= '"+type.getTIlibelle()+"WHERE TIN_CODE = '"+type.getTIcode()+"'");
+            ps = maCnx.prepareStatement("UPDATE type_individu SET TIN_LIBELLE= '" + type.getTIlibelle() + "WHERE TIN_CODE = '" + type.getTIcode() + "'");
             ps.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
-  
-  
+    @Override
+    public ArrayList<Famille> getAllFamille() {
+        ArrayList<Famille> lesFamille = new ArrayList<Famille>();
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("select FAM_CODE, FAM_LIBELLE from famille");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Famille f = new Famille(rs.getInt(1), rs.getString(2));
+                lesFamille.add(f);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesFamille;
+    }
+
+    @Override
+    public String getNomFamille(int indexFam) {
+        String FamilyLabel= "" ;
+        //if you don't find any FamilyName match with Name, return 0 so we have to block 
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("select FAM_LIBELLE from famille where FAM_CODE = " + indexFam + ";");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                FamilyLabel = (rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FamilyLabel;
+    }
+
 }
