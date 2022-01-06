@@ -6,8 +6,10 @@
 package Vues;
 
 import Entity.ConnexionBdd;
+import Entity.Famille;
 import Entity.FonctionsMetier;
 import Entity.Medicament;
+import javax.swing.JOptionPane;
 
 public class frmInsererMedicament extends javax.swing.JFrame
 {
@@ -40,12 +42,12 @@ public class frmInsererMedicament extends javax.swing.JFrame
         jLabel5 = new javax.swing.JLabel();
         txtDepot = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtFam = new javax.swing.JTextField();
         txtCompo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtEffet = new javax.swing.JTextField();
         txtNomCommercial = new javax.swing.JTextField();
         btnInserer = new javax.swing.JButton();
+        cmbFam = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(89, 136, 255));
 
@@ -130,12 +132,6 @@ public class frmInsererMedicament extends javax.swing.JFrame
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("Prix");
 
-        txtFam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFamActionPerformed(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel7.setText("Nom Commercial");
 
@@ -173,9 +169,9 @@ public class frmInsererMedicament extends javax.swing.JFrame
                     .addComponent(txtInterdiction)
                     .addComponent(txtprix)
                     .addComponent(txtNomCommercial, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(txtFam)
                     .addComponent(txtCompo)
-                    .addComponent(txtDepot))
+                    .addComponent(txtDepot)
+                    .addComponent(cmbFam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(81, 81, 81))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,11 +189,11 @@ public class frmInsererMedicament extends javax.swing.JFrame
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtNomCommercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(cmbFam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCompo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -243,22 +239,24 @@ public class frmInsererMedicament extends javax.swing.JFrame
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
 
-        String unNomMedicament = txtNomCommercial.getText();
-        String nomFamMedicament = txtFam.getText();
-        String unComposition = txtCompo.getText();
-        String unEffet = txtEffet.getText();
-        String unContreIndic = txtInterdiction.getText();
-        Float unPrix = Float.parseFloat(txtprix.getText());
+        if (txtNomCommercial.getText().compareTo("") == 0|| txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
+            JOptionPane.showMessageDialog(this, "Ecrire les information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            // condition if its int, String etc 
 
-        int numFam = fm.getNumFamille(nomFamMedicament);
+            String unNomMedicament = txtNomCommercial.getText();
+            String nomFamMedicament = fm.getNomFamille(cmbFam.getSelectedIndex()+1);
+            String unComposition = txtCompo.getText();
+            String unEffet = txtEffet.getText();
+            String unContreIndic = txtInterdiction.getText();
+            Float unPrix = Float.parseFloat(txtprix.getText());
+            int numFam = fm.getNumFamille(nomFamMedicament);
 
-        // Should I get txt Depolegal or use increment 
-        Medicament userInputMedicament = new Medicament(0, unNomMedicament, numFam, unComposition, unEffet, unContreIndic, unPrix);
-
-        //if condition for user input in case of empty etc
-        fm.setMedicament(userInputMedicament);
-
-
+            Medicament userInputMedicament = new Medicament(fm.getIndexMedicament() + 1, unNomMedicament, numFam, unComposition, unEffet, unContreIndic, unPrix);
+            fm.setMedicament(userInputMedicament);
+            JOptionPane.showMessageDialog(this, "Suceed", "Suceed", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnInsererMouseClicked
 
     private void txtInterdictionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInterdictionActionPerformed
@@ -270,11 +268,10 @@ public class frmInsererMedicament extends javax.swing.JFrame
         fm = new FonctionsMetier();
         txtDepot.setText(String.valueOf(fm.getIndexMedicament() + 1));
         txtDepot.setEnabled(false);
+         for (Famille f : fm.getAllFamille()) {
+            cmbFam.addItem(f.getFamLibelle());
+        }
     }//GEN-LAST:event_formWindowOpened
-
-    private void txtFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFamActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
@@ -332,6 +329,7 @@ public class frmInsererMedicament extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnInserer;
+    private javax.swing.JComboBox<String> cmbFam;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -345,7 +343,6 @@ public class frmInsererMedicament extends javax.swing.JFrame
     private javax.swing.JTextField txtCompo;
     private javax.swing.JTextField txtDepot;
     private javax.swing.JTextField txtEffet;
-    private javax.swing.JTextField txtFam;
     private javax.swing.JTextField txtInterdiction;
     private javax.swing.JTextField txtNomCommercial;
     private javax.swing.JTextField txtprix;

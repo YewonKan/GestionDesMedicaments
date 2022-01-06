@@ -8,16 +8,13 @@ package Vues;
 import Entity.ConnexionBdd;
 import Entity.FonctionsMetier;
 import Entity.TypeIndividu;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author 82103
- */
 public class frmUser extends javax.swing.JFrame
 {
 
-     FonctionsMetier fm;
-     
+    FonctionsMetier fm;
+
     public frmUser() {
         initComponents();
     }
@@ -152,9 +149,17 @@ public class frmUser extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
-       String userLabel = txtType.getText();
-       TypeIndividu userInputType = new TypeIndividu(0, userLabel);
-       fm.setTypePersonne(userInputType);
+        int TypeIndex = Integer.parseInt(txtCode.getText());
+
+        String userLabel = txtType.getText();
+        if (userLabel.compareTo("") == 0) {
+             JOptionPane.showMessageDialog(this, "Ecrire label s'il vous plaît", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        
+        }
+        else{
+            TypeIndividu userInputType = new TypeIndividu(TypeIndex, userLabel);
+            fm.setTypePersonne(userInputType);
+        }
     }//GEN-LAST:event_btnInsererMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
