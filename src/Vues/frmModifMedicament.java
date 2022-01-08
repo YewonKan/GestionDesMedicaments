@@ -259,8 +259,10 @@ public class frmModifMedicament extends javax.swing.JFrame
         if (txtNomCommercial.getText().compareTo("") == 0 ||  txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Ecrire les information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
+        else if(Integer.parseInt(txtprix.getText()) == (int) Integer.parseInt(txtprix.getText()) ) {
+            JOptionPane.showMessageDialog(this, "Prix doit étre numero", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        }
         else {
-            // condition if its int, String etc 
             
             String unNomMedicament = txtNomCommercial.getText();
             String nomFamMedicament = fm.getNomFamille(cmbFam.getSelectedIndex()+1);
