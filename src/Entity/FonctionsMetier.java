@@ -85,7 +85,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("select FAM_LIBELLE from famille where FAM_LIBELLE = " + nomFam + ";");
+            ps = maCnx.prepareStatement("select FAM_CODE from famille where FAM_LIBELLE = '" + nomFam + "';");
             rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -123,7 +123,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("insert into medicament(MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON) values(" + med.getCdFamMedicament() + "," + med.getComposition() + "," + med.getEffet() + "," + med.getContreIndic() + "," + med.getPrix() + ")");
+            ps = maCnx.prepareStatement("insert into medicament(MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON) values('"+med.getNomMedicament()+"','" + med.getCdFamMedicament() + "','" + med.getComposition() + "','" + med.getEffet() + "','" + med.getContreIndic() + "'," + med.getPrix() + ")");
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -136,7 +136,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("insert into prescrire(MED_DEPOTLEGAL,TIN_CODE,DOS_CODE,PRE_POSOLOGIE) values(" + prescrption.getIdMedicament() + "," + prescrption.getTICode() + "," + prescrption.getDoseCode() + "," + prescrption.getPrePosologie() + ")");
+            ps = maCnx.prepareStatement("insert into prescrire(MED_DEPOTLEGAL,TIN_CODE,DOS_CODE,PRE_POSOLOGIE) values(" + prescrption.getIdMedicament() + "," + prescrption.getTICode() + "," + prescrption.getDoseCode() + ",'" + prescrption.getPrePosologie() + "')");
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -149,7 +149,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("insert into type_individu(TIN_LIBELLE) values(" + typePersonne.getTIlibelle() + ")");
+            ps = maCnx.prepareStatement("insert into type_individu(TIN_LIBELLE) values('"+typePersonne.getTIlibelle()+"')");
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -233,7 +233,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("UPDATE medicament SET MED_NOMCOMMERCIAL= '" + med.getNomMedicament() + "', FAM_CODE = '" + med.getCdFamMedicament() + "',MED_COMPOSITION='" + med.getComposition() + "',MED_EFFETS = '" + med.getEffet() + "', MED_CONTREINDIC = '" + med.getContreIndic() + "',MED_PRIXECHANTILLON = '" + "WHERE CustomerID = '" + med.getIdMedicament() + "'");
+            ps = maCnx.prepareStatement("UPDATE medicament SET MED_NOMCOMMERCIAL= '" + med.getNomMedicament() + "', FAM_CODE = " + med.getCdFamMedicament() + ",MED_COMPOSITION='" + med.getComposition() + "',MED_EFFETS = '" + med.getEffet() + "', MED_CONTREINDIC = '" + med.getContreIndic() + "',MED_PRIXECHANTILLON = "+med.getPrix()+" WHERE MED_DEPOTLEGAL = " + med.getIdMedicament());
             ps.executeUpdate();
 
         } catch (SQLException ex) {

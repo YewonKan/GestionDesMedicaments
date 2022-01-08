@@ -159,6 +159,7 @@ public class frmUser extends javax.swing.JFrame
         else{
             TypeIndividu userInputType = new TypeIndividu(TypeIndex, userLabel);
             fm.setTypePersonne(userInputType);
+            JOptionPane.showMessageDialog(this, "Suceed", "Suceed", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnInsererMouseClicked
 
