@@ -289,6 +289,10 @@ public class frmPrescription extends javax.swing.JFrame
             Prescrire userPrescription = new Prescrire(MedicamentIndex, TypeIndex, userDosage, userPosologie);
             fm.setPrescrire(userPrescription);
             JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
+
+            frmPrescription frm = new frmPrescription();
+            frm.setVisible(true);
+            dispose();
         }
 
 
