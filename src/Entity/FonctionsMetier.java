@@ -299,7 +299,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("select m.MED_DEPOTLEGAL, m.MED_NOMCOMMERCIAL,f.FAM_LIBELLE, m.MED_COMPOSITION, m.MED_EFFETS, m.MED_CONTREINDIC, m.MED_PRIXECHANTILLON  from medicament m LEFT JOIN famille f ON m.FAM_CODE = f.FAM_CODE where MED_NOMCOMMERCIAL like =  '%"+rn+"%'");
+            ps = maCnx.prepareStatement("select m.MED_DEPOTLEGAL, m.MED_NOMCOMMERCIAL,f.FAM_LIBELLE, m.MED_COMPOSITION, m.MED_EFFETS, m.MED_CONTREINDIC, m.MED_PRIXECHANTILLON  from medicament m LEFT JOIN famille f ON m.FAM_CODE = f.FAM_CODE where MED_NOMCOMMERCIAL like '%"+rn+"%'");
             rs = ps.executeQuery();
 
             while (rs.next()) {
