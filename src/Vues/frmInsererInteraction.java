@@ -50,6 +50,11 @@ public class frmInsererInteraction extends javax.swing.JFrame
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSelect2 = new javax.swing.JTable();
         btnInserer = new javax.swing.JButton();
+        jToolBar2 = new javax.swing.JToolBar();
+        btnMed1 = new javax.swing.JButton();
+        btnInter1 = new javax.swing.JButton();
+        btnPresc1 = new javax.swing.JButton();
+        btnPers1 = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -180,7 +185,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnInserer)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -194,6 +199,47 @@ public class frmInsererInteraction extends javax.swing.JFrame
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
+        jToolBar2.setRollover(true);
+
+        btnMed1.setText("MEDICAMENT");
+        btnMed1.setFocusable(false);
+        btnMed1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMed1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMed1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMed1MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(btnMed1);
+
+        btnInter1.setText("INTERDICTION");
+        btnInter1.setFocusable(false);
+        btnInter1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInter1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(btnInter1);
+
+        btnPresc1.setText("PRESCRIPTION");
+        btnPresc1.setFocusable(false);
+        btnPresc1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPresc1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPresc1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPresc1MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(btnPresc1);
+
+        btnPers1.setText("TYPE-PERSONNE");
+        btnPers1.setFocusable(false);
+        btnPers1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPers1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPers1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPers1MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(btnPers1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -202,12 +248,15 @@ public class frmInsererInteraction extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -272,11 +321,29 @@ public class frmInsererInteraction extends javax.swing.JFrame
     }//GEN-LAST:event_btnInsererMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+
         frmMain frm = new frmMain();
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btnMed1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMed1MouseClicked
+        frmInsererMedicament frm = new frmInsererMedicament();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMed1MouseClicked
+
+    private void btnPresc1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPresc1MouseClicked
+        frmPrescription frm = new frmPrescription();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPresc1MouseClicked
+
+    private void btnPers1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPers1MouseClicked
+        frmUser frm = new frmUser();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPers1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -317,6 +384,10 @@ public class frmInsererInteraction extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInserer;
+    private javax.swing.JButton btnInter1;
+    private javax.swing.JButton btnMed1;
+    private javax.swing.JButton btnPers1;
+    private javax.swing.JButton btnPresc1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
@@ -326,6 +397,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JTable tblSelect1;
     private javax.swing.JTable tblSelect2;
     // End of variables declaration//GEN-END:variables

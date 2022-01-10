@@ -312,4 +312,23 @@ public class FonctionsMetier implements IMetier
         return mesMedicaments;
     }
 
+    @Override
+    public ArrayList<TypeIndividu> getTypeIndividuSearch(String rn) {
+         ArrayList<TypeIndividu> mesIndividu = new ArrayList<>();
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("select TIN_CODE, TIN_LIBELLE from type_individu where TIN_LIBELLE like '%"+rn+"%'");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                TypeIndividu m = new TypeIndividu(rs.getInt(1),rs.getString(2));
+                mesIndividu.add(m);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return mesIndividu;
+    }
+
 }

@@ -9,6 +9,7 @@ import Entity.ConnexionBdd;
 import Entity.Famille;
 import Entity.FonctionsMetier;
 import Entity.Medicament;
+import com.mysql.jdbc.StringUtils;
 import javax.swing.JOptionPane;
 
 public class frmModifMedicament extends javax.swing.JFrame
@@ -256,16 +257,16 @@ public class frmModifMedicament extends javax.swing.JFrame
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
 
-        if (txtNomCommercial.getText().compareTo("") == 0 ||  txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
+        if (txtNomCommercial.getText().compareTo("") == 0 || txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Ecrire les information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
-        else if(Integer.parseInt(txtprix.getText()) != (int) Integer.parseInt(txtprix.getText()) ) {
+        else if (!StringUtils.isStrictlyNumeric(txtprix.getText())) {
             JOptionPane.showMessageDialog(this, "Prix doit étre numero", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            
+
             String unNomMedicament = txtNomCommercial.getText();
-            String nomFamMedicament = fm.getNomFamille(cmbFam.getSelectedIndex()+1);
+            String nomFamMedicament = fm.getNomFamille(cmbFam.getSelectedIndex() + 1);
             String unComposition = txtCompo.getText();
             String unEffet = txtEffet.getText();
             String unContreIndic = txtInterdiction.getText();
