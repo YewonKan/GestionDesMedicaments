@@ -331,8 +331,27 @@ public class FonctionsMetier implements IMetier
         return mesIndividu;
     }
 
-    public users VerfierIdentifiants(String text, String text0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public users VerfierIdentifiants(String login, String mdp) {
+      
+        users user = null;
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+
+            ps = maCnx.prepareStatement("SELECT idUser, login, password from users where login = ? and password = ? ");
+            ps.setString(1, login);
+            ps.setString(2, mdp);
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                user = new users(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
+
     }
 
 }

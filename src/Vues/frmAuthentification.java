@@ -168,17 +168,11 @@ public class frmAuthentification extends javax.swing.JFrame {
             
             if (unUser!= null) 
             {
-                if (unUser("admin")==0)
-                {
-                    frmAdministrateur frm = new frmAdministrateur();
-                    frm.setVisible(true);
-                }
-                else
-                {
-                   frmUser frm = new frmUser();
-                   frm.setVisible(true);
-                }
+                
+                frmMain frm = new frmMain();
+                frm.setVisible(true);
             }
+            
             else 
             {
                 lblErreur.setText("Identifiants incorrects");
