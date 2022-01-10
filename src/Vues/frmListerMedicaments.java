@@ -131,6 +131,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
             }
         });
 
+        btnModifier.setBackground(new java.awt.Color(255, 255, 255));
         btnModifier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_jyONPH5W2D.png"))); // NOI18N
         btnModifier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -162,13 +163,21 @@ public class frmListerMedicaments extends javax.swing.JFrame
     );
     jScrollPane1.setViewportView(tblMedicament);
 
-    txtSearch.setText("Entrer le nom de medicament ");
+    txtSearch.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+    txtSearch.setText("Entrer le nom d' un medicament ");
     txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             txtSearchMouseClicked(evt);
         }
     });
+    txtSearch.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            txtSearchActionPerformed(evt);
+        }
+    });
 
+    btnSearch.setBackground(new java.awt.Color(255, 255, 255));
+    btnSearch.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
     btnSearch.setText("Chercher");
     btnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -176,6 +185,8 @@ public class frmListerMedicaments extends javax.swing.JFrame
         }
     });
 
+    jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+    jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
     jLabel1.setText("double clic : liste de pertubateurs");
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -197,9 +208,10 @@ public class frmListerMedicaments extends javax.swing.JFrame
                             .addComponent(jLabel1))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
-                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jScrollPane1))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(13, 13, 13))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(btnModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())))
@@ -222,7 +234,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel1)
-            .addContainerGap(25, Short.MAX_VALUE))
+            .addContainerGap(21, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,7 +302,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
 
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
         if (tblMedicament.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "Choisir le Medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Choisir un Medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
 
@@ -304,7 +316,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
 
         if (txtSearch.getText() == "") {
-            JOptionPane.showMessageDialog(this, "Ecrire le nom de medicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ecrire le nom du medicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             fm = new FonctionsMetier();
@@ -324,6 +336,10 @@ public class frmListerMedicaments extends javax.swing.JFrame
             txtSearch.setText("");
         }
     }//GEN-LAST:event_txtSearchMouseClicked
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void tblMedicamentMouseClicked(java.awt.event.MouseEvent evt) {
         int selectedMedIndex = (int) tblMedicament.getValueAt(tblMedicament.getSelectedRow(), 0);

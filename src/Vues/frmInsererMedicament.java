@@ -112,39 +112,57 @@ public class frmInsererMedicament extends javax.swing.JFrame
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtInterdiction.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtInterdiction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtInterdictionActionPerformed(evt);
             }
         });
 
+        txtprix.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("Depot Legal");
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setText("Famille");
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel3.setText("Composition");
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel4.setText("Effet");
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel5.setText("Contre Interdiction");
 
+        txtDepot.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtDepot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDepotActionPerformed(evt);
             }
         });
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("Prix");
 
+        txtCompo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel7.setText("Nom Commercial");
 
+        txtEffet.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        txtNomCommercial.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        btnInserer.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnInserer.setText("INSERER");
         btnInserer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -152,14 +170,18 @@ public class frmInsererMedicament extends javax.swing.JFrame
             }
         });
 
+        jComboBox1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
+        jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
 
+        btnMed.setBackground(new java.awt.Color(255, 255, 255));
+        btnMed.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnMed.setText("MEDICAMENT");
         btnMed.setFocusable(false);
         btnMed.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -176,6 +198,8 @@ public class frmInsererMedicament extends javax.swing.JFrame
         });
         jToolBar1.add(btnMed);
 
+        btnInter.setBackground(new java.awt.Color(255, 255, 255));
+        btnInter.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnInter.setText("INTERDICTION");
         btnInter.setFocusable(false);
         btnInter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -187,6 +211,8 @@ public class frmInsererMedicament extends javax.swing.JFrame
         });
         jToolBar1.add(btnInter);
 
+        btnPresc.setBackground(new java.awt.Color(255, 255, 255));
+        btnPresc.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnPresc.setText("PRESCRIPTION");
         btnPresc.setFocusable(false);
         btnPresc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -198,6 +224,8 @@ public class frmInsererMedicament extends javax.swing.JFrame
         });
         jToolBar1.add(btnPresc);
 
+        btnPers.setBackground(new java.awt.Color(255, 255, 255));
+        btnPers.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnPers.setText("TYPE-PERSONNE");
         btnPers.setFocusable(false);
         btnPers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -214,24 +242,17 @@ public class frmInsererMedicament extends javax.swing.JFrame
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)))
-                        .addGap(53, 53, 53))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(146, 146, 146))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEffet)
                     .addComponent(txtInterdiction)
@@ -239,13 +260,13 @@ public class frmInsererMedicament extends javax.swing.JFrame
                     .addComponent(txtNomCommercial)
                     .addComponent(txtCompo)
                     .addComponent(txtDepot)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jComboBox1, 0, 103, Short.MAX_VALUE))
                 .addGap(81, 81, 81))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnInserer)
                 .addGap(21, 21, 21))
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,10 +330,10 @@ public class frmInsererMedicament extends javax.swing.JFrame
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
 
         if (txtNomCommercial.getText().compareTo("") == 0 || txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
-            JOptionPane.showMessageDialog(this, "Ecrire les informations", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Remplir les champs", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else if(!StringUtils.isStrictlyNumeric(txtprix.getText())) {
-            JOptionPane.showMessageDialog(this, "Prix doit étre numero", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Le prix doit etre un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
 
