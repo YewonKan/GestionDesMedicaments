@@ -368,9 +368,7 @@ public class frmInsererMedicament extends javax.swing.JFrame
     }//GEN-LAST:event_btnMedActionPerformed
 
     private void btnMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedMouseClicked
-        frmInsererInteraction frm = new frmInsererInteraction();
-        frm.setVisible(true);
-        dispose();
+    
     }//GEN-LAST:event_btnMedMouseClicked
 
     private void btnInterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInterMouseClicked

@@ -7,10 +7,12 @@ package Vues;
 
 import Entity.ConnexionBdd;
 import Entity.FonctionsMetier;
+import Entity.Interagis;
 import Entity.Medicament;
 import Model.ModelMedicament;
 import Model.ModelPersonne;
 import com.mysql.jdbc.StringUtils;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -242,7 +244,6 @@ public class frmListerMedicaments extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
 
-        
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fm = new FonctionsMetier();
         ConnexionBdd cnx = new ConnexionBdd();
@@ -301,7 +302,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
     }//GEN-LAST:event_btnModifierMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-        
+
         if (txtSearch.getText() == "") {
             JOptionPane.showMessageDialog(this, "Ecrire le nom de medicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
@@ -324,18 +325,28 @@ public class frmListerMedicaments extends javax.swing.JFrame
         }
     }//GEN-LAST:event_txtSearchMouseClicked
 
-     private void tblMedicamentMouseClicked(java.awt.event.MouseEvent evt) {                                           
-        
-         
-         if(count==0){
+    private void tblMedicamentMouseClicked(java.awt.event.MouseEvent evt) {
+        int selectedMedIndex = (int) tblMedicament.getValueAt(tblMedicament.getSelectedRow(), 0);
+        ArrayList<Interagis> lesInteragis = fm.getAllInteragis();
+
+        for (Interagis i : lesInteragis) {
+            if (selectedMedIndex == i.getMedMedPerturbe()) {
+
+            }
+            else if (selectedMedIndex == i.getMedPerturbateur()) {
+
+            }
+        }
+
+        if (lesInteragis.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Il n'y a pas de pertubateurs pour ce medicament", "Liste de pertubateurs", JOptionPane.ERROR_MESSAGE);
-         }
-         else{
+        }
+        else {
             JOptionPane.showMessageDialog(this, "", "Liste de pertubateurs", JOptionPane.INFORMATION_MESSAGE);
 
-         }
-    }    
-     
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
