@@ -331,4 +331,8 @@ public class FonctionsMetier implements IMetier
         return mesIndividu;
     }
 
+    public users VerfierIdentifiants(String text, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
