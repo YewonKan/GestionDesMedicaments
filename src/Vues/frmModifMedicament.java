@@ -82,6 +82,7 @@ public class frmModifMedicament extends javax.swing.JFrame
         });
 
         btnMoveToList.setBackground(new java.awt.Color(89, 136, 255));
+        btnMoveToList.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnMoveToList.setForeground(new java.awt.Color(89, 136, 255));
         btnMoveToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/backToList.png"))); // NOI18N
         btnMoveToList.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,45 +114,66 @@ public class frmModifMedicament extends javax.swing.JFrame
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtInterdiction.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtInterdiction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtInterdictionActionPerformed(evt);
             }
         });
 
+        txtprix.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("Depot Legal");
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setText("Famille");
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel3.setText("Composition");
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel4.setText("Effet");
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel5.setText("Contre Interdiction");
 
+        txtDepot.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtDepot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDepotActionPerformed(evt);
             }
         });
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("Prix");
 
+        txtCompo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel7.setText("Nom Commercial");
 
-        btnInserer.setText("INSERER");
+        txtEffet.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        txtNomCommercial.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        btnInserer.setBackground(new java.awt.Color(255, 255, 255));
+        btnInserer.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnInserer.setText("MODIFIER");
         btnInserer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnInsererMouseClicked(evt);
             }
         });
+
+        cmbFam.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -258,10 +280,10 @@ public class frmModifMedicament extends javax.swing.JFrame
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
 
         if (txtNomCommercial.getText().compareTo("") == 0 || txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
-            JOptionPane.showMessageDialog(this, "Ecrire les information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ecrire les informations", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else if (!StringUtils.isStrictlyNumeric(txtprix.getText())) {
-            JOptionPane.showMessageDialog(this, "Prix doit étre numero", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Le prix doit etre un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
 

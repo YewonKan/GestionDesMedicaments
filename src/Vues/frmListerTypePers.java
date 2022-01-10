@@ -130,6 +130,7 @@ public class frmListerTypePers extends javax.swing.JFrame
         ));
         jScrollPane2.setViewportView(tblTypePersonne);
 
+        btnModifier.setBackground(new java.awt.Color(255, 255, 255));
         btnModifier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_jyONPH5W2D.png"))); // NOI18N
         btnModifier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,6 +143,7 @@ public class frmListerTypePers extends javax.swing.JFrame
             }
         });
 
+        txtSearch.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtSearch.setText("Entrer le type personne pour chercher");
         txtSearch.setSelectedTextColor(new java.awt.Color(204, 255, 255));
         txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,6 +152,8 @@ public class frmListerTypePers extends javax.swing.JFrame
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
+        btnSearch.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnSearch.setText("Chercher");
         btnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -167,7 +171,7 @@ public class frmListerTypePers extends javax.swing.JFrame
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSearch))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -182,7 +186,7 @@ public class frmListerTypePers extends javax.swing.JFrame
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTypePersnonne)
                     .addComponent(btnMedicament))
@@ -190,7 +194,7 @@ public class frmListerTypePers extends javax.swing.JFrame
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnModifier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,10 +268,10 @@ public class frmListerTypePers extends javax.swing.JFrame
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
         if (txtSearch.getText() == "") {
-            JOptionPane.showMessageDialog(this, "Ecrire le nom de medicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ecrire le nom du medicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else if (StringUtils.isStrictlyNumeric(txtSearch.getText())) {
-            JOptionPane.showMessageDialog(this, "Le nom de TypePersonne n'est pas numero", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Le nom de TypePersonne n'est pas un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             fm = new FonctionsMetier();

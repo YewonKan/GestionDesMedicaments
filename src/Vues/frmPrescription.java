@@ -132,18 +132,26 @@ public class frmPrescription extends javax.swing.JFrame
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel1.setText("Medicament");
 
+        cmbMedicament.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         cmbMedicament.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbMedicamentActionPerformed(evt);
             }
         });
 
+        cmbTypePerso.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setText("Type de Personne");
 
+        txtdosage.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        btnmoins.setBackground(new java.awt.Color(255, 255, 255));
         btnmoins.setText("-");
         btnmoins.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -156,6 +164,7 @@ public class frmPrescription extends javax.swing.JFrame
             }
         });
 
+        btnPlus.setBackground(new java.awt.Color(255, 255, 255));
         btnPlus.setText("+");
         btnPlus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,12 +177,15 @@ public class frmPrescription extends javax.swing.JFrame
             }
         });
 
+        txtPosologie.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         txtPosologie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPosologieActionPerformed(evt);
             }
         });
 
+        btnInsert.setBackground(new java.awt.Color(255, 255, 255));
+        btnInsert.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnInsert.setText("INSERER");
         btnInsert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -186,14 +198,19 @@ public class frmPrescription extends javax.swing.JFrame
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel3.setText("Dosage");
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel4.setText("Posologie");
 
+        jToolBar2.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar2.setRollover(true);
 
+        btnMed1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMed1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnMed1.setText("MEDICAMENT");
         btnMed1.setFocusable(false);
         btnMed1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -205,6 +222,8 @@ public class frmPrescription extends javax.swing.JFrame
         });
         jToolBar2.add(btnMed1);
 
+        btnInter1.setBackground(new java.awt.Color(255, 255, 255));
+        btnInter1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnInter1.setText("INTERDICTION");
         btnInter1.setFocusable(false);
         btnInter1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -216,12 +235,16 @@ public class frmPrescription extends javax.swing.JFrame
         });
         jToolBar2.add(btnInter1);
 
+        btnPresc1.setBackground(new java.awt.Color(255, 255, 255));
+        btnPresc1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnPresc1.setText("PRESCRIPTION");
         btnPresc1.setFocusable(false);
         btnPresc1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPresc1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar2.add(btnPresc1);
 
+        btnPers1.setBackground(new java.awt.Color(255, 255, 255));
+        btnPers1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnPers1.setText("TYPE-PERSONNE");
         btnPers1.setFocusable(false);
         btnPers1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -257,7 +280,7 @@ public class frmPrescription extends javax.swing.JFrame
                             .addComponent(cmbTypePerso, 0, 187, Short.MAX_VALUE)
                             .addComponent(cmbMedicament, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPosologie)
-                            .addComponent(btnInsert, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnInsert, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56)))
                 .addGap(23, 23, 23))
             .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -284,7 +307,7 @@ public class frmPrescription extends javax.swing.JFrame
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPosologie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(btnInsert)
                 .addGap(30, 30, 30))
         );
@@ -343,7 +366,7 @@ public class frmPrescription extends javax.swing.JFrame
     private void btnmoinsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmoinsMouseClicked
         int a = Integer.parseInt(txtdosage.getText());
         if (a == 0) {
-            JOptionPane.showMessageDialog(this, "dosage est déjà 0, nous ne pouvons pas soustraire", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Le dosage est déjà 0, nous ne pouvons pas soustraire", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             a = a - 1;

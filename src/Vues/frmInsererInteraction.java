@@ -112,9 +112,11 @@ public class frmInsererInteraction extends javax.swing.JFrame
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel1.setText("SELECTION");
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel3.setText("SELECTION");
 
@@ -150,6 +152,8 @@ public class frmInsererInteraction extends javax.swing.JFrame
         });
         jScrollPane2.setViewportView(tblSelect2);
 
+        btnInserer.setBackground(new java.awt.Color(255, 255, 255));
+        btnInserer.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         btnInserer.setText("INSERER");
         btnInserer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -199,8 +203,11 @@ public class frmInsererInteraction extends javax.swing.JFrame
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
+        jToolBar2.setBackground(new java.awt.Color(255, 255, 255));
         jToolBar2.setRollover(true);
 
+        btnMed1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMed1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnMed1.setText("MEDICAMENT");
         btnMed1.setFocusable(false);
         btnMed1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -212,12 +219,16 @@ public class frmInsererInteraction extends javax.swing.JFrame
         });
         jToolBar2.add(btnMed1);
 
+        btnInter1.setBackground(new java.awt.Color(255, 255, 255));
+        btnInter1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnInter1.setText("INTERDICTION");
         btnInter1.setFocusable(false);
         btnInter1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInter1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar2.add(btnInter1);
 
+        btnPresc1.setBackground(new java.awt.Color(255, 255, 255));
+        btnPresc1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnPresc1.setText("PRESCRIPTION");
         btnPresc1.setFocusable(false);
         btnPresc1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -229,6 +240,8 @@ public class frmInsererInteraction extends javax.swing.JFrame
         });
         jToolBar2.add(btnPresc1);
 
+        btnPers1.setBackground(new java.awt.Color(255, 255, 255));
+        btnPers1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnPers1.setText("TYPE-PERSONNE");
         btnPers1.setFocusable(false);
         btnPers1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -288,7 +301,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
         if ((tblSelect1.getSelectedRowCount() == 0) || (tblSelect2.getSelectedRowCount() == 0)) {
-            JOptionPane.showMessageDialog(this, "Sélectionner des medicament dans deux tables", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Sélectionner des medicaments dans deux tables", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             String selectedMedNom1 = tblSelect1.getValueAt(tblSelect1.getSelectedRow(), 0).toString();
@@ -314,7 +327,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
                     JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
-                    JOptionPane.showMessageDialog(this, "Cette interagis combination existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Cette interaction existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
