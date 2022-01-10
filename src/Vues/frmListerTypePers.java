@@ -9,6 +9,7 @@ import Entity.ConnexionBdd;
 import Entity.FonctionsMetier;
 import Model.ModelMedicament;
 import Model.ModelPersonne;
+import com.mysql.jdbc.StringUtils;
 import javax.swing.JOptionPane;
 
 /**
@@ -141,7 +142,13 @@ public class frmListerTypePers extends javax.swing.JFrame
             }
         });
 
-        txtSearch.setText("Entrer le nom de medicament ");
+        txtSearch.setText("Entrer le type personne pour chercher");
+        txtSearch.setSelectedTextColor(new java.awt.Color(204, 255, 255));
+        txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSearchMouseClicked(evt);
+            }
+        });
 
         btnSearch.setText("Chercher");
         btnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -244,7 +251,7 @@ public class frmListerTypePers extends javax.swing.JFrame
     }//GEN-LAST:event_btnHomeMouseClicked
 
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
-         if (tblTypePersonne.getSelectedRowCount() == 0) {
+        if (tblTypePersonne.getSelectedRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Saisir", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
@@ -256,8 +263,30 @@ public class frmListerTypePers extends javax.swing.JFrame
     }//GEN-LAST:event_btnModifierMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-        // TODO add your handling code here:
+        if (txtSearch.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Ecrire le nom de medicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (StringUtils.isStrictlyNumeric(txtSearch.getText())) {
+            JOptionPane.showMessageDialog(this, "Le nom de TypePersonne n'est pas numero", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            fm = new FonctionsMetier();
+            mdlPersonne = new ModelPersonne();
+            mdlPersonne.loadDatas(fm.getTypeIndividuSearch(txtSearch.getText()));
+            tblTypePersonne.setModel(mdlPersonne);
+            if (fm.getMedicamentSearch(txtSearch.getText()).isEmpty()) {
+                JOptionPane.showMessageDialog(this, "il n'y a aucun résultat correspondant à ce nom de médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+                mdlPersonne.loadDatas(fm.getAllIndividu());
+                tblTypePersonne.setModel(mdlPersonne);
+            }
+        }
     }//GEN-LAST:event_btnSearchMouseClicked
+
+    private void txtSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSearchMouseClicked
+        if (txtSearch.getText().contains("Entrer le type")) {
+            txtSearch.setText("");
+        }
+    }//GEN-LAST:event_txtSearchMouseClicked
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,8 @@
  */
 package Vues;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruth9
@@ -32,6 +34,11 @@ public class frmDashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(89, 136, 255));
 
@@ -105,6 +112,10 @@ public class frmDashboard extends javax.swing.JFrame {
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+            JOptionPane.showMessageDialog(this, "under construction", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

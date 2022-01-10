@@ -42,6 +42,11 @@ public class frmPrescription extends javax.swing.JFrame
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        btnMed = new javax.swing.JButton();
+        btnInter = new javax.swing.JButton();
+        btnPresc = new javax.swing.JButton();
+        btnPers = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -56,9 +61,40 @@ public class frmPrescription extends javax.swing.JFrame
         btnInsert = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jToolBar2 = new javax.swing.JToolBar();
+        btnMed1 = new javax.swing.JButton();
+        btnInter1 = new javax.swing.JButton();
+        btnPresc1 = new javax.swing.JButton();
+        btnPers1 = new javax.swing.JButton();
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/chrome_ZpF0AWG32d.png"))); // NOI18N
         jButton2.setText("jButton1");
+
+        jToolBar1.setRollover(true);
+
+        btnMed.setText("MEDICAMENT");
+        btnMed.setFocusable(false);
+        btnMed.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMed.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnMed);
+
+        btnInter.setText("INTERDICTION");
+        btnInter.setFocusable(false);
+        btnInter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInter.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnInter);
+
+        btnPresc.setText("PRESCRIPTION");
+        btnPresc.setFocusable(false);
+        btnPresc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPresc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnPresc);
+
+        btnPers.setText("TYPE-PERSONNE");
+        btnPers.setFocusable(false);
+        btnPers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPers.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnPers);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
@@ -156,6 +192,47 @@ public class frmPrescription extends javax.swing.JFrame
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel4.setText("Posologie");
 
+        jToolBar2.setRollover(true);
+
+        btnMed1.setText("MEDICAMENT");
+        btnMed1.setFocusable(false);
+        btnMed1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMed1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMed1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMed1MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(btnMed1);
+
+        btnInter1.setText("INTERDICTION");
+        btnInter1.setFocusable(false);
+        btnInter1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInter1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInter1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInter1MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(btnInter1);
+
+        btnPresc1.setText("PRESCRIPTION");
+        btnPresc1.setFocusable(false);
+        btnPresc1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPresc1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(btnPresc1);
+
+        btnPers1.setText("TYPE-PERSONNE");
+        btnPers1.setFocusable(false);
+        btnPers1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPers1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPers1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPers1MouseClicked(evt);
+            }
+        });
+        jToolBar2.add(btnPers1);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -183,11 +260,13 @@ public class frmPrescription extends javax.swing.JFrame
                             .addComponent(btnInsert, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56)))
                 .addGap(23, 23, 23))
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cmbMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -312,6 +391,24 @@ public class frmPrescription extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_btnInsertActionPerformed
 
+    private void btnMed1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMed1MouseClicked
+        frmInsererMedicament frm = new frmInsererMedicament();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMed1MouseClicked
+
+    private void btnInter1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInter1MouseClicked
+        frmInsererInteraction frm = new frmInsererInteraction();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnInter1MouseClicked
+
+    private void btnPers1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPers1MouseClicked
+        frmUser frm = new frmUser();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPers1MouseClicked
+     
     /**
      * @param args the command line arguments
      */
@@ -351,7 +448,15 @@ public class frmPrescription extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnInsert;
+    private javax.swing.JButton btnInter;
+    private javax.swing.JButton btnInter1;
+    private javax.swing.JButton btnMed;
+    private javax.swing.JButton btnMed1;
+    private javax.swing.JButton btnPers;
+    private javax.swing.JButton btnPers1;
     private javax.swing.JButton btnPlus;
+    private javax.swing.JButton btnPresc;
+    private javax.swing.JButton btnPresc1;
     private javax.swing.JButton btnmoins;
     private javax.swing.JComboBox<String> cmbMedicament;
     private javax.swing.JComboBox<String> cmbTypePerso;
@@ -362,6 +467,8 @@ public class frmPrescription extends javax.swing.JFrame
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JTextField txtPosologie;
     private javax.swing.JTextField txtdosage;
     // End of variables declaration//GEN-END:variables

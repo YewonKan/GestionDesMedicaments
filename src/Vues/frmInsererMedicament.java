@@ -31,6 +31,7 @@ public class frmInsererMedicament extends javax.swing.JFrame
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jPanel2 = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -48,7 +49,12 @@ public class frmInsererMedicament extends javax.swing.JFrame
         txtEffet = new javax.swing.JTextField();
         txtNomCommercial = new javax.swing.JTextField();
         btnInserer = new javax.swing.JButton();
-        cmbFam = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jToolBar1 = new javax.swing.JToolBar();
+        btnMed = new javax.swing.JButton();
+        btnInter = new javax.swing.JButton();
+        btnPresc = new javax.swing.JButton();
+        btnPers = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(89, 136, 255));
 
@@ -62,6 +68,9 @@ public class frmInsererMedicament extends javax.swing.JFrame
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 36, Short.MAX_VALUE)
         );
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -143,48 +152,106 @@ public class frmInsererMedicament extends javax.swing.JFrame
             }
         });
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.setRollover(true);
+
+        btnMed.setText("MEDICAMENT");
+        btnMed.setFocusable(false);
+        btnMed.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMed.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMedMouseClicked(evt);
+            }
+        });
+        btnMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMedActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnMed);
+
+        btnInter.setText("INTERDICTION");
+        btnInter.setFocusable(false);
+        btnInter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnInter.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInterMouseClicked(evt);
+            }
+        });
+        jToolBar1.add(btnInter);
+
+        btnPresc.setText("PRESCRIPTION");
+        btnPresc.setFocusable(false);
+        btnPresc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPresc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPresc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPrescMouseClicked(evt);
+            }
+        });
+        jToolBar1.add(btnPresc);
+
+        btnPers.setText("TYPE-PERSONNE");
+        btnPers.setFocusable(false);
+        btnPers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPers.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPersMouseClicked(evt);
+            }
+        });
+        jToolBar1.add(btnPers);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGap(5, 5, 5)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)))
                         .addGap(53, 53, 53))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(146, 146, 146))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))))
+                        .addComponent(jLabel6)
+                        .addGap(146, 146, 146))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEffet)
                     .addComponent(txtInterdiction)
                     .addComponent(txtprix)
-                    .addComponent(txtNomCommercial, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(txtNomCommercial)
                     .addComponent(txtCompo)
                     .addComponent(txtDepot)
-                    .addComponent(cmbFam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(81, 81, 81))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnInserer)
                 .addGap(21, 21, 21))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtDepot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,9 +261,9 @@ public class frmInsererMedicament extends javax.swing.JFrame
                     .addComponent(txtNomCommercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbFam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(14, 14, 14)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCompo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -229,8 +296,7 @@ public class frmInsererMedicament extends javax.swing.JFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -251,7 +317,7 @@ public class frmInsererMedicament extends javax.swing.JFrame
         else {
 
             String unNomMedicament = txtNomCommercial.getText();
-            String nomFamMedicament = fm.getNomFamille(cmbFam.getSelectedIndex() + 1);
+            String nomFamMedicament = fm.getNomFamille(jComboBox1.getSelectedIndex() + 1);
             String unComposition = txtCompo.getText();
             String unEffet = txtEffet.getText();
             String unContreIndic = txtInterdiction.getText();
@@ -277,7 +343,7 @@ public class frmInsererMedicament extends javax.swing.JFrame
         txtDepot.setText(String.valueOf(fm.getIndexMedicament() + 1));
         txtDepot.setEnabled(false);
         for (Famille f : fm.getAllFamille()) {
-            cmbFam.addItem(f.getFamLibelle());
+            jComboBox1.addItem(f.getFamLibelle());
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -292,6 +358,38 @@ public class frmInsererMedicament extends javax.swing.JFrame
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHomeMouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btnMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMedActionPerformed
+
+    private void btnMedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMedMouseClicked
+        frmInsererInteraction frm = new frmInsererInteraction();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMedMouseClicked
+
+    private void btnInterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInterMouseClicked
+        frmInsererInteraction frm = new frmInsererInteraction();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnInterMouseClicked
+
+    private void btnPrescMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrescMouseClicked
+        frmPrescription frm = new frmPrescription();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPrescMouseClicked
+
+    private void btnPersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersMouseClicked
+        frmUser frm = new frmUser();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPersMouseClicked
 
     /**
      * @param args the command line arguments
@@ -337,7 +435,12 @@ public class frmInsererMedicament extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnInserer;
-    private javax.swing.JComboBox<String> cmbFam;
+    private javax.swing.JButton btnInter;
+    private javax.swing.JButton btnMed;
+    private javax.swing.JButton btnPers;
+    private javax.swing.JButton btnPresc;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -348,6 +451,7 @@ public class frmInsererMedicament extends javax.swing.JFrame
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField txtCompo;
     private javax.swing.JTextField txtDepot;
     private javax.swing.JTextField txtEffet;
