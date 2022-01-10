@@ -54,6 +54,10 @@ public class frmAuthentification extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 16)); // NOI18N
         jLabel3.setText("Nom d'utilisateur ");
 
+        txtUtilisateur.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
+        pwdUtilisateur.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton1.setText("ENTRER");
