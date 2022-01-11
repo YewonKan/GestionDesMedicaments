@@ -342,23 +342,31 @@ public class frmListerMedicaments extends javax.swing.JFrame
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void tblMedicamentMouseClicked(java.awt.event.MouseEvent evt) {
-        int selectedMedIndex = (int) tblMedicament.getValueAt(tblMedicament.getSelectedRow(), 0);
+        int selectedMedIndex = Integer.parseInt(tblMedicament.getValueAt(tblMedicament.getSelectedRow(), 0).toString());
         ArrayList<Interagis> lesInteragis = fm.getAllInteragis();
+        ArrayList<String> resultJOption = new ArrayList<String>();
 
         for (Interagis i : lesInteragis) {
-            if (selectedMedIndex == i.getMedMedPerturbe()) {
-
+            if (i.getMedMedPerturbe() == selectedMedIndex ) {
+                String Interagis = fm.getNomMedicament(i.getMedPerturbateur());
+                resultJOption.add(String.valueOf(Interagis));
             }
-            else if (selectedMedIndex == i.getMedPerturbateur()) {
-
+            else if (i.getMedPerturbateur()== selectedMedIndex) {
+                String Interagis = fm.getNomMedicament(i.getMedMedPerturbe());
+                resultJOption.add(String.valueOf(Interagis));
             }
         }
 
-        if (lesInteragis.isEmpty()) {
+        if (resultJOption.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Il n'y a pas de pertubateurs pour ce medicament", "Liste de pertubateurs", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            JOptionPane.showMessageDialog(this, "", "Liste de pertubateurs", JOptionPane.INFORMATION_MESSAGE);
+            String msg = resultJOption.get(0);
+            for (int i = 1; i < resultJOption.size(); i++) {
+                msg = msg + "\n" + resultJOption.get(i);
+            }
+
+            JOptionPane.showMessageDialog(this, msg, "Liste de pertubateurs", JOptionPane.INFORMATION_MESSAGE);
 
         }
     }

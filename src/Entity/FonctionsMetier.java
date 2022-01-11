@@ -354,4 +354,24 @@ public class FonctionsMetier implements IMetier
 
     }
 
+    @Override
+    public String getNomMedicament(int index) {
+        String nom = "";
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON from medicament");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (index == rs.getInt(1) ) {
+                    nom = rs.getString(2);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return (nom);
+    }
+
 }

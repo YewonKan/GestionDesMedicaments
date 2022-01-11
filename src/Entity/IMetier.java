@@ -27,4 +27,5 @@ public interface IMetier {
     public ArrayList<MedicamentFamNom> getMedicamentSearch(String rn);
     public ArrayList<TypeIndividu> getTypeIndividuSearch(String rn);
     public users VerfierIdentifiants(String login, String mdp);
+    public String getNomMedicament(int index);
 }
