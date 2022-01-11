@@ -187,7 +187,7 @@ public class frmUser extends javax.swing.JFrame
         });
         jToolBar1.add(btnPresc);
 
-        btnPers.setBackground(new java.awt.Color(255, 255, 255));
+        btnPers.setBackground(new java.awt.Color(89, 136, 255));
         btnPers.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnPers.setText("TYPE-PERSONNE");
         btnPers.setFocusable(false);

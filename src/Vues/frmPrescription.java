@@ -235,12 +235,17 @@ public class frmPrescription extends javax.swing.JFrame
         });
         jToolBar2.add(btnInter1);
 
-        btnPresc1.setBackground(new java.awt.Color(255, 255, 255));
+        btnPresc1.setBackground(new java.awt.Color(89, 136, 255));
         btnPresc1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnPresc1.setText("PRESCRIPTION");
         btnPresc1.setFocusable(false);
         btnPresc1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPresc1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPresc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPresc1ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(btnPresc1);
 
         btnPers1.setBackground(new java.awt.Color(255, 255, 255));
@@ -431,6 +436,10 @@ public class frmPrescription extends javax.swing.JFrame
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPers1MouseClicked
+
+    private void btnPresc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPresc1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPresc1ActionPerformed
      
     /**
      * @param args the command line arguments

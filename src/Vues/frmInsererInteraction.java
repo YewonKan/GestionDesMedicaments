@@ -219,12 +219,17 @@ public class frmInsererInteraction extends javax.swing.JFrame
         });
         jToolBar2.add(btnMed1);
 
-        btnInter1.setBackground(new java.awt.Color(255, 255, 255));
+        btnInter1.setBackground(new java.awt.Color(89, 136, 255));
         btnInter1.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         btnInter1.setText("INTERDICTION");
         btnInter1.setFocusable(false);
         btnInter1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnInter1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnInter1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInter1ActionPerformed(evt);
+            }
+        });
         jToolBar2.add(btnInter1);
 
         btnPresc1.setBackground(new java.awt.Color(255, 255, 255));
@@ -357,6 +362,10 @@ public class frmInsererInteraction extends javax.swing.JFrame
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPers1MouseClicked
+
+    private void btnInter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInter1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInter1ActionPerformed
 
     /**
      * @param args the command line arguments

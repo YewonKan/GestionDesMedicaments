@@ -256,7 +256,7 @@ public class frmListerTypePers extends javax.swing.JFrame
 
     private void btnModifierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModifierMouseClicked
         if (tblTypePersonne.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "Saisir", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Choisir un type de personne", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             int indexType = Integer.parseInt(tblTypePersonne.getValueAt(tblTypePersonne.getSelectedRow(), 0).toString());
