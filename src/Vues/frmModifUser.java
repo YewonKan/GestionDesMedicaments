@@ -295,7 +295,6 @@ public class frmModifUser extends javax.swing.JFrame
 
         if (txtTypeType.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Ecrire un label s'il vous plaît", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
-
         }
         else {
             int TypeIndex = Integer.parseInt(txtCode.getText());
