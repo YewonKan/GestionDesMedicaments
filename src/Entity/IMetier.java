@@ -6,6 +6,7 @@
 package Entity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface IMetier {
     public ArrayList<Medicament> getAllMedicament();
@@ -28,4 +29,5 @@ public interface IMetier {
     public ArrayList<TypeIndividu> getTypeIndividuSearch(String rn);
     public users VerfierIdentifiants(String login, String mdp);
     public String getNomMedicament(int index);
+    public  HashMap<String,Double> GetDatasGraph1();
 }

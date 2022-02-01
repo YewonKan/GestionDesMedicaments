@@ -293,7 +293,7 @@ public class frmModifUser extends javax.swing.JFrame
 
     private void btnInserer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInserer1MouseClicked
 
-        if (txtType.getText().compareTo("") == 0) {
+        if (txtTypeType.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Ecrire un label s'il vous plaît", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
 
         }
