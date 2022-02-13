@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import Entity.Medicament;
 
 public class FonctionsMetier implements IMetier
 {
@@ -251,7 +252,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("UPDATE type_individu SET TIN_LIBELLE= '" + type.getTIlibelle() + "WHERE TIN_CODE = '" + type.getTIcode() + "'");
+            ps = maCnx.prepareStatement("UPDATE type_individu SET TIN_LIBELLE= '" + type.getTIlibelle() + "' WHERE TIN_CODE = " + type.getTIcode());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -396,5 +397,41 @@ public class FonctionsMetier implements IMetier
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lesDatas;
+    }
+
+    @Override
+    public Medicament getMedicamentByIndex(int index) {
+        Medicament resMed = null;
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON from medicament where MED_DEPOTLEGAL = '"+index+"'");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                resMed = new Medicament(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getFloat(7));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resMed;
+    }
+
+    @Override
+    public TypeIndividu getTypeIndividuByIndex(int index) {
+         TypeIndividu resType = null;
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("SELECT TIN_CODE, TIN_LIBELLE FROM type_individu where TIN_CODE = '"+index+"'");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                resType = new TypeIndividu(rs.getInt(1),rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resType;
     }
 }
