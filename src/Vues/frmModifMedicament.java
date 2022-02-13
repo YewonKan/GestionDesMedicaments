@@ -279,11 +279,16 @@ public class frmModifMedicament extends javax.swing.JFrame
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
 
+        Medicament MedEx = fm.getMedicamentByIndex(SelectedMed);
+        
         if (txtNomCommercial.getText().compareTo("") == 0 || txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Ecrire les informations", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
-        else if (!StringUtils.isStrictlyNumeric(txtprix.getText())) {
-            JOptionPane.showMessageDialog(this, "Le prix doit etre un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+//        else if (!StringUtils.isStrictlyNumeric(txtprix.getText())) {
+//            JOptionPane.showMessageDialog(this, "Le prix doit etre un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+//        }
+        else if(txtNomCommercial.getText().compareTo(String.valueOf(MedEx.getCdFamMedicament())) == 0 || txtCompo.getText().compareTo(MedEx.getComposition()) == 0 || txtEffet.getText().compareTo(MedEx.getEffet()) == 0 || txtInterdiction.getText().compareTo(MedEx.getContreIndic()) == 0 || txtprix.getText().compareTo(String.valueOf(MedEx.getPrix())) == 0){
+            JOptionPane.showMessageDialog(this, "same informations as before ! change the information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
 
@@ -308,11 +313,20 @@ public class frmModifMedicament extends javax.swing.JFrame
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ConnexionBdd bdd = new ConnexionBdd();
         fm = new FonctionsMetier();
+        Medicament MedEx = fm.getMedicamentByIndex(SelectedMed);
+        
         txtDepot.setText(String.valueOf(SelectedMed));
         txtDepot.setEnabled(false);
         for (Famille f : fm.getAllFamille()) {
             cmbFam.addItem(f.getFamLibelle());
         }
+        
+        txtCompo.setText(MedEx.getComposition());
+        txtNomCommercial.setText(String.valueOf(MedEx.getCdFamMedicament()));
+        txtEffet.setText(MedEx.getEffet());
+        txtInterdiction.setText(MedEx.getContreIndic());
+        txtprix.setText(String.valueOf(MedEx.getPrix()));
+                
     }//GEN-LAST:event_formWindowOpened
 
     private void btnMoveToListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMoveToListMouseClicked

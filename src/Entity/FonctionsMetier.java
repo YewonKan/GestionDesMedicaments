@@ -10,9 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import Entity.Medicament;
 
 public class FonctionsMetier implements IMetier
 {
@@ -21,6 +23,7 @@ public class FonctionsMetier implements IMetier
     private PreparedStatement ps;
     private Connection maCnx;
 
+    
     @Override
     public ArrayList<Medicament> getAllMedicament() {
         ArrayList<Medicament> mesMedicaments = new ArrayList<Medicament>();
@@ -195,6 +198,9 @@ public class FonctionsMetier implements IMetier
         return indexMedicine;
     }
 
+    /* @author Yewon
+     * 
+     */
     @Override
     public void setInteragis(int med1, int med2) {
         try {
@@ -246,7 +252,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("UPDATE type_individu SET TIN_LIBELLE= '" + type.getTIlibelle() + "WHERE TIN_CODE = '" + type.getTIcode() + "'");
+            ps = maCnx.prepareStatement("UPDATE type_individu SET TIN_LIBELLE= '" + type.getTIlibelle() + "' WHERE TIN_CODE = " + type.getTIcode());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -299,7 +305,7 @@ public class FonctionsMetier implements IMetier
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("select m.MED_DEPOTLEGAL, m.MED_NOMCOMMERCIAL,f.FAM_LIBELLE, m.MED_COMPOSITION, m.MED_EFFETS, m.MED_CONTREINDIC, m.MED_PRIXECHANTILLON  from medicament m LEFT JOIN famille f ON m.FAM_CODE = f.FAM_CODE where MED_NOMCOMMERCIAL like '%"+rn+"%'");
+            ps = maCnx.prepareStatement("select m.MED_DEPOTLEGAL, m.MED_NOMCOMMERCIAL,f.FAM_LIBELLE, m.MED_COMPOSITION, m.MED_EFFETS, m.MED_CONTREINDIC, m.MED_PRIXECHANTILLON  from medicament m LEFT JOIN famille f ON m.FAM_CODE = f.FAM_CODE where MED_NOMCOMMERCIAL like '%" + rn + "%'");
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -314,15 +320,15 @@ public class FonctionsMetier implements IMetier
 
     @Override
     public ArrayList<TypeIndividu> getTypeIndividuSearch(String rn) {
-         ArrayList<TypeIndividu> mesIndividu = new ArrayList<>();
+        ArrayList<TypeIndividu> mesIndividu = new ArrayList<>();
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("select TIN_CODE, TIN_LIBELLE from type_individu where TIN_LIBELLE like '%"+rn+"%'");
+            ps = maCnx.prepareStatement("select TIN_CODE, TIN_LIBELLE from type_individu where TIN_LIBELLE like '%" + rn + "%'");
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                TypeIndividu m = new TypeIndividu(rs.getInt(1),rs.getString(2));
+                TypeIndividu m = new TypeIndividu(rs.getInt(1), rs.getString(2));
                 mesIndividu.add(m);
             }
         } catch (SQLException ex) {
@@ -333,7 +339,7 @@ public class FonctionsMetier implements IMetier
 
     @Override
     public users VerfierIdentifiants(String login, String mdp) {
-      
+
         users user = null;
         try {
 
@@ -344,7 +350,7 @@ public class FonctionsMetier implements IMetier
             ps.setString(2, mdp);
             rs = ps.executeQuery();
 
-            if(rs.next()){
+            if (rs.next()) {
                 user = new users(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3));
             }
         } catch (SQLException ex) {
@@ -364,7 +370,7 @@ public class FonctionsMetier implements IMetier
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                if (index == rs.getInt(1) ) {
+                if (index == rs.getInt(1)) {
                     nom = rs.getString(2);
                 }
             }
@@ -374,4 +380,58 @@ public class FonctionsMetier implements IMetier
         return (nom);
     }
 
+    @Override
+    public HashMap<String, Double> GetDatasGraph1() {
+        HashMap<String, Double> lesDatas = new HashMap<>();
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("SELECT medicament.MED_NOMCOMMERCIAL, famille.FAM_LIBELLE\n"
+                    + "FROM famille inner join medicament on famille.FAM_CODE = medicament.FAM_CODE");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                lesDatas.put(rs.getString(1), rs.getDouble(2));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesDatas;
+    }
+
+    @Override
+    public Medicament getMedicamentByIndex(int index) {
+        Medicament resMed = null;
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("select MED_DEPOTLEGAL, MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION, MED_EFFETS, MED_CONTREINDIC, MED_PRIXECHANTILLON from medicament where MED_DEPOTLEGAL = '"+index+"'");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                resMed = new Medicament(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getFloat(7));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resMed;
+    }
+
+    @Override
+    public TypeIndividu getTypeIndividuByIndex(int index) {
+         TypeIndividu resType = null;
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("SELECT TIN_CODE, TIN_LIBELLE FROM type_individu where TIN_CODE = '"+index+"'");
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                resType = new TypeIndividu(rs.getInt(1),rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resType;
+    }
 }

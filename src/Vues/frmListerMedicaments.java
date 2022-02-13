@@ -54,6 +54,8 @@ public class frmListerMedicaments extends javax.swing.JFrame
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        listePertubateur = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -89,7 +91,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(633, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,32 +191,46 @@ public class frmListerMedicaments extends javax.swing.JFrame
     jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
     jLabel1.setText("double clic : liste de pertubateurs");
 
+    listePertubateur.setText("Interagis");
+    listePertubateur.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            listePertubateurActionPerformed(evt);
+        }
+    });
+
+    jLabel2.setText("Liste de pertubateur");
+
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel2Layout.createSequentialGroup()
             .addGap(30, 30, 30)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                     .addComponent(btnMedicament, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnTypePersnonne, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(152, 152, 152))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                             .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(13, 13, 13))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jLabel1)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(btnModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())))
+                    .addContainerGap())
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addComponent(jLabel2)
+                    .addGap(18, 18, 18)
+                    .addComponent(listePertubateur, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
     );
     jPanel2Layout.setVerticalGroup(
         jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +250,11 @@ public class frmListerMedicaments extends javax.swing.JFrame
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel1)
-            .addContainerGap(21, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(listePertubateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2))
+            .addContainerGap(16, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -341,33 +361,36 @@ public class frmListerMedicaments extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
 
+    private void listePertubateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listePertubateurActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listePertubateurActionPerformed
+
     private void tblMedicamentMouseClicked(java.awt.event.MouseEvent evt) {
         int selectedMedIndex = Integer.parseInt(tblMedicament.getValueAt(tblMedicament.getSelectedRow(), 0).toString());
         ArrayList<Interagis> lesInteragis = fm.getAllInteragis();
-        ArrayList<String> resultJOption = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<String>();
 
         for (Interagis i : lesInteragis) {
             if (i.getMedMedPerturbe() == selectedMedIndex ) {
                 String Interagis = fm.getNomMedicament(i.getMedPerturbateur());
-                resultJOption.add(String.valueOf(Interagis));
+                result.add(String.valueOf(Interagis));
             }
             else if (i.getMedPerturbateur()== selectedMedIndex) {
                 String Interagis = fm.getNomMedicament(i.getMedMedPerturbe());
-                resultJOption.add(String.valueOf(Interagis));
+                result.add(String.valueOf(Interagis));
             }
         }
 
-        if (resultJOption.isEmpty()) {
+        if (result.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Il n'y a pas de pertubateurs pour ce medicament", "Liste de pertubateurs", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            String msg = resultJOption.get(0);
-            for (int i = 1; i < resultJOption.size(); i++) {
-                msg = msg + "\n" + resultJOption.get(i);
+            String msg = result.get(0);
+            for (int i = 1; i < result.size(); i++) {
+                msg = msg + ", " + result.get(i);
             }
 
-            JOptionPane.showMessageDialog(this, msg, "Liste de pertubateurs", JOptionPane.INFORMATION_MESSAGE);
-
+            listePertubateur.setText(msg);
         }
     }
 
@@ -395,12 +418,14 @@ public class frmListerMedicaments extends javax.swing.JFrame
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField listePertubateur;
     private javax.swing.JTable tblMedicament;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
