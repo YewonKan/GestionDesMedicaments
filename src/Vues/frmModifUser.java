@@ -280,6 +280,8 @@ public class frmModifUser extends javax.swing.JFrame
         String userLabel = txtType.getText();
         TypeIndividu userInputType = new TypeIndividu(0, userLabel);
         fm.setTypePersonne(userInputType);
+        
+        
     }//GEN-LAST:event_btnInsererMouseClicked
 
     private void btnInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsererActionPerformed
@@ -297,12 +299,17 @@ public class frmModifUser extends javax.swing.JFrame
         if (txtTypeType.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Ecrire un label s'il vous plaît", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
+        else if(txtCodeType.getText().compareTo(String.valueOf(SelectedType)) == 0){
+            JOptionPane.showMessageDialog(this, "Same value than before", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+
+        }
         else {
             String userLabel = txtTypeType.getText();
             TypeIndividu userInputType = new TypeIndividu(SelectedType, userLabel);
             fm.ModifierTypePerson(userInputType);
             JOptionPane.showMessageDialog(this, "Succeed", "Succeed", JOptionPane.INFORMATION_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnInserer1MouseClicked
 
     private void btnInserer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserer1ActionPerformed

@@ -7,13 +7,13 @@ package Vues;
 
 import Entity.Famille;
 import Entity.FonctionsMetier;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import Entity.ConnexionBdd;
 import java.util.Map;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
@@ -41,10 +41,10 @@ public class frmDashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        cmbFam = new javax.swing.JComboBox<>();
+        BtnGraphe1 = new javax.swing.JButton();
+        BtnGraph2 = new javax.swing.JButton();
+        BtnGraph3 = new javax.swing.JButton();
+        Btngraph4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -86,22 +86,49 @@ public class frmDashboard extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("Nombre Medicament par Famille");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnGraphe1.setText("Nombre Medicament par Famille");
+        BtnGraphe1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                BtnGraphe1MouseClicked(evt);
             }
         });
 
-        jButton3.setText("le nombre medicament prescrit");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BtnGraph2.setText("le nombre medicament prescrit");
+        BtnGraph2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnGraph2MouseClicked(evt);
+            }
+        });
+        BtnGraph2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BtnGraph2ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Le nombre de prescription par famille");
-        jButton4.setToolTipText("");
+        BtnGraph3.setText("Le nombre de prescription par famille");
+        BtnGraph3.setToolTipText("");
+        BtnGraph3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnGraph3MouseClicked(evt);
+            }
+        });
+        BtnGraph3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGraph3ActionPerformed(evt);
+            }
+        });
+
+        Btngraph4.setText("Le nombre de interagis par medicament");
+        Btngraph4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btngraph4MouseClicked(evt);
+            }
+        });
+        Btngraph4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btngraph4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -109,26 +136,29 @@ public class frmDashboard extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(cmbFam, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Btngraph4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BtnGraphe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BtnGraph2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BtnGraph3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(57, 258, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addComponent(jButton1)
+                .addComponent(BtnGraphe1)
                 .addGap(51, 51, 51)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(cmbFam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(jButton4)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addComponent(BtnGraph2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(BtnGraph3)
+                .addGap(39, 39, 39)
+                .addComponent(Btngraph4)
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,29 +191,84 @@ public class frmDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        ConnexionBdd cnx = new ConnexionBdd();
         fm = new FonctionsMetier();
-        for (Famille f : fm.getAllFamille()) {
-            cmbFam.addItem(f.getFamLibelle());
-        }
+//        for (Famille f : fm.getAllFamille()) {
+//            cmbFam.addItem(f.getFamLibelle());
+//        }
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BtnGraph2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGraph2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BtnGraph2ActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-//        DefaultCategoryDataset donnees = new DefaultCategoryDataset();
-//        // Permet de remplir un jeu de séries dans notre objet donnees
-//        // DatasSet
-//        for(Map.Entry valeur : fm.GetDatasGraph1(cmbFam.getSelectedItem().toString()).entrySet())
-//        {
-//            donnees.setValue(Double.parseDouble(valeur.getValue().toString()), cmbFam.getSelectedItem().toString(), valeur.getKey().toString());
-//        }
-//        JFreeChart graph = ChartFactory.createLineChart("Pour l'action "+cmbFam.getSelectedItem().toString(), "Trader", "Prix d'achat", (CategoryDataset) donnees);
-//        ChartFrame fra = new ChartFrame("Graphique n°1", graph);
-//        fra.pack();
-//        fra.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void BtnGraphe1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGraphe1MouseClicked
+        DefaultCategoryDataset donnees = new DefaultCategoryDataset();
+        // Permet de remplir un jeu de séries dans notre objet donnees
+        // DatasSet
+        
+        for(Map.Entry valeur : fm.GetDatasGraph1().entrySet())
+        {
+            donnees.setValue(Double.parseDouble(valeur.getValue().toString()),"nombre médicament",valeur.getKey().toString());
+        }
+        JFreeChart graph = ChartFactory.createBarChart("Nombre médicament par famille","","nombre médicament",donnees,PlotOrientation.VERTICAL,false, true, false);
+        ChartFrame fra = new ChartFrame("Graphique n°1", graph);
+        fra.pack();
+        fra.setVisible(true);
+    }//GEN-LAST:event_BtnGraphe1MouseClicked
+
+    private void BtnGraph2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGraph2MouseClicked
+        DefaultPieDataset donnees = new DefaultPieDataset();
+        // Permet de remplir un jeu de séries dans notre objet donnees
+        // DatasSet
+        for(Map.Entry valeur : fm.GetDatasGraph2().entrySet())
+        {
+            donnees.setValue(valeur.getKey().toString(),Double.parseDouble(valeur.getValue().toString()));
+        }
+        JFreeChart graph = ChartFactory.createPieChart("le Nombre médicament prescrit",donnees,true,true,false);
+        ChartFrame fra = new ChartFrame("Graphique n°2", graph);
+        fra.pack();
+        fra.setVisible(true);
+    }//GEN-LAST:event_BtnGraph2MouseClicked
+
+    private void Btngraph4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btngraph4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btngraph4ActionPerformed
+
+    private void Btngraph4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btngraph4MouseClicked
+        DefaultPieDataset donnees = new DefaultPieDataset();
+        // Permet de remplir un jeu de séries dans notre objet donnees
+        // DatasSet
+        for(Map.Entry valeur : fm.GetDatasGraph4().entrySet())
+        {
+            donnees.setValue(valeur.getKey().toString(),Double.parseDouble(valeur.getValue().toString()));
+        }
+        JFreeChart graph = ChartFactory.createPieChart("le Nombre interagis par famille",donnees,true,true,false);
+        ChartFrame fra = new ChartFrame("Graphique n°4", graph);
+        fra.pack();
+        fra.setVisible(true);
+    }//GEN-LAST:event_Btngraph4MouseClicked
+
+    private void BtnGraph3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGraph3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnGraph3ActionPerformed
+
+    private void BtnGraph3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGraph3MouseClicked
+
+        DefaultCategoryDataset donnees = new DefaultCategoryDataset();
+        // Permet de remplir un jeu de séries dans notre objet donnees
+        // DatasSet
+        
+        for(Map.Entry valeur : fm.GetDatasGraph3().entrySet())
+        {
+            donnees.setValue(Double.parseDouble(valeur.getValue().toString()),"nombre médicament",valeur.getKey().toString());
+        }
+        JFreeChart graph = ChartFactory.createBarChart("le Nombre médicament prescrit par famille","","nombre médicament",donnees,PlotOrientation.VERTICAL,false, true, false);
+        ChartFrame fra = new ChartFrame("Graphique n°3", graph);
+        fra.pack();
+        fra.setVisible(true);
+    }//GEN-LAST:event_BtnGraph3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -221,11 +306,11 @@ public class frmDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbFam;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BtnGraph2;
+    private javax.swing.JButton BtnGraph3;
+    private javax.swing.JButton BtnGraphe1;
+    private javax.swing.JButton Btngraph4;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

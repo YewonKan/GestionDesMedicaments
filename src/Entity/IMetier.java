@@ -29,7 +29,10 @@ public interface IMetier {
     public ArrayList<TypeIndividu> getTypeIndividuSearch(String rn);
     public users VerfierIdentifiants(String login, String mdp);
     public String getNomMedicament(int index);
-    public  HashMap<String,Double> GetDatasGraph1();
     public Medicament getMedicamentByIndex(int index);
     public TypeIndividu getTypeIndividuByIndex(int index);
+    public  HashMap<String,Integer> GetDatasGraph1();
+    public HashMap<String,Integer> GetDatasGraph2();
+    public HashMap<String,Integer> GetDatasGraph3();
+    public HashMap<String,Integer> GetDatasGraph4();
 }

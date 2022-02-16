@@ -381,16 +381,19 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
-    public HashMap<String, Double> GetDatasGraph1() {
-        HashMap<String, Double> lesDatas = new HashMap<>();
+    public HashMap<String,Integer> GetDatasGraph1() {
+        HashMap<String,Integer> lesDatas = new HashMap<>();
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("SELECT medicament.MED_NOMCOMMERCIAL, famille.FAM_LIBELLE\n"
-                    + "FROM famille inner join medicament on famille.FAM_CODE = medicament.FAM_CODE");
+            ps = maCnx.prepareStatement("SELECT famille.FAM_LIBELLE ,COUNT(*) "
+                    + "FROM medicament inner join famille on famille.FAM_CODE = medicament.FAM_CODE "
+                    + "GROUP BY medicament.FAM_CODE;");
             rs = ps.executeQuery();
+           
             while (rs.next()) {
-                lesDatas.put(rs.getString(1), rs.getDouble(2));
+                lesDatas.put(rs.getString(1),rs.getInt(2));
+                
             }
 
         } catch (SQLException ex) {
@@ -433,5 +436,67 @@ public class FonctionsMetier implements IMetier
             Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resType;
+    }
+    
+    @Override
+    public HashMap<String,Integer> GetDatasGraph2()
+    {
+        HashMap<String,Integer> lesDatas = new HashMap<>();
+        try {
+            
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("SELECT medicament.MED_NOMCOMMERCIAL ,COUNT(*) FROM `prescrire` INNER JOIN medicament on prescrire.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL GROUP BY prescrire.MED_DEPOTLEGAL");
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                lesDatas.put(rs.getString(1),rs.getInt(2));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesDatas;
+    }
+    
+    @Override
+    public HashMap<String,Integer> GetDatasGraph3()
+    {
+        HashMap<String,Integer> lesDatas = new HashMap<>();
+        try {
+            
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("SELECT famille.FAM_LIBELLE ,COUNT(*) FROM `prescrire` INNER JOIN medicament on prescrire.MED_DEPOTLEGAL = medicament.MED_DEPOTLEGAL INNER JOIN famille on medicament.FAM_CODE = famille.FAM_CODE GROUP BY medicament.FAM_CODE;");
+            rs = ps.executeQuery();
+            while(rs.next())
+            {
+                lesDatas.put(rs.getString(1),rs.getInt(2));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesDatas;
+    }
+
+    @Override
+    public HashMap<String, Integer> GetDatasGraph4() {
+     HashMap<String,Integer> lesDatas = new HashMap<>();
+        try {
+            
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("SELECT medicament.MED_NOMCOMMERCIAL, COUNT(*) FROM `interagis` INNER JOIN medicament ON interagis.MED_PERTURBATEUR = medicament.MED_DEPOTLEGAL GROUP BY MED_PERTURBATEUR;");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                    lesDatas.put(rs.getString(1),rs.getInt(2));  
+            }
+             ps = maCnx.prepareStatement("SELECT medicament.MED_NOMCOMMERCIAL, COUNT(*) FROM `interagis` INNER JOIN medicament ON interagis.MED_PERTURBATEUR = medicament.MED_DEPOTLEGAL GROUP BY interagis.MED_MED_PERTURBE;");           
+            rs = ps.executeQuery();
+            while(rs.next()){
+                      lesDatas.replace(rs.getString(1),lesDatas.get(rs.getString(1))+rs.getInt(2));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lesDatas;
     }
 }
