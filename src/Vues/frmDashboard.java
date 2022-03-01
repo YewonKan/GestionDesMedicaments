@@ -254,7 +254,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(valeur.getKey().toString(),Double.parseDouble(valeur.getValue().toString()));
         }
-        JFreeChart graph = ChartFactory.createPieChart("le Nombre médicament prescrit",donnees,true,true,false);
+        JFreeChart graph = ChartFactory.createPieChart("le Nombre de médicament prescrit",donnees,true,true,false);
         ChartFrame fra = new ChartFrame("Graphique n°2", graph);
         fra.pack();
         fra.setVisible(true);
@@ -272,7 +272,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(valeur.getKey().toString(),Double.parseDouble(valeur.getValue().toString()));
         }
-        JFreeChart graph = ChartFactory.createPieChart("le Nombre interagis par famille",donnees,true,true,false);
+        JFreeChart graph = ChartFactory.createPieChart("le Nombre d'interaction par famille",donnees,true,true,false);
         ChartFrame fra = new ChartFrame("Graphique n°4", graph);
         fra.pack();
         fra.setVisible(true);
@@ -292,7 +292,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(Double.parseDouble(valeur.getValue().toString()),"nombre médicament",valeur.getKey().toString());
         }
-        JFreeChart graph = ChartFactory.createBarChart("le Nombre médicament prescrit par famille","","nombre médicament",donnees,PlotOrientation.VERTICAL,false, true, false);
+        JFreeChart graph = ChartFactory.createBarChart("le Nombre de médicament prescrit par famille","","nombre médicament",donnees,PlotOrientation.VERTICAL,false, true, false);
         ChartFrame fra = new ChartFrame("Graphique n°3", graph);
         fra.pack();
         fra.setVisible(true);

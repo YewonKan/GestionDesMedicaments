@@ -302,7 +302,7 @@ public class frmModifUser extends javax.swing.JFrame
         }
         
         else if(txtTypeType.getText().compareTo(type.getTIlibelle()) == 0){
-            JOptionPane.showMessageDialog(this, "Same value than before", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ce sont les memes valeurs", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
 
         }
         else if(fm.VerifierTypeExist(txtTypeType.getText())){

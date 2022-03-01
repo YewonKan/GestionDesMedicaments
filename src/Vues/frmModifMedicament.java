@@ -301,7 +301,7 @@ public class frmModifMedicament extends javax.swing.JFrame
 //        } withhold for a while since modifier fonction brings String
         
         else if(txtNomCommercial.getText().compareTo(String.valueOf(MedEx.getCdFamMedicament())) == 0 || txtCompo.getText().compareTo(MedEx.getComposition()) == 0 || txtEffet.getText().compareTo(MedEx.getEffet()) == 0 || txtInterdiction.getText().compareTo(MedEx.getContreIndic()) == 0 || txtprix.getText().compareTo(String.valueOf(MedEx.getPrix())) == 0){
-            JOptionPane.showMessageDialog(this, "same informations as before ! change the information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, " ce sont les memes informations ! il faut les changer", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else if (fm.VerifierMedicamentExist(userInputMedicament)){
              JOptionPane.showMessageDialog(this, "Ce medicament existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);

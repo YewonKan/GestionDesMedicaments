@@ -303,7 +303,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
             int selectedMedIndex2 = fm.getMatchedIndex(selectedMedNom2);
 
             if (selectedMedIndex1 == selectedMedIndex2) {
-                JOptionPane.showMessageDialog(this, "Vous ne pouvez pas sélectionner la même médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Vous ne pouvez pas sélectionner le même médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
             }
             else {
                 boolean exist = true;

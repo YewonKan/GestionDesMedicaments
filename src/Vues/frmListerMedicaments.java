@@ -189,7 +189,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
 
     jLabel1.setBackground(new java.awt.Color(255, 255, 255));
     jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-    jLabel1.setText("double clic : liste de pertubateurs");
+    jLabel1.setText("double clic : liste des pertubateurs");
 
     listePertubateur.setText("Interagis");
     listePertubateur.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +198,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
         }
     });
 
-    jLabel2.setText("Liste de pertubateur");
+    jLabel2.setText("Liste des pertubateurs");
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -336,7 +336,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
 
         if (txtSearch.getText() == "") {
-            JOptionPane.showMessageDialog(this, "Ecrire le nom du medicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ecrirez le nom du médicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             fm = new FonctionsMetier();
@@ -382,7 +382,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
         }
 
         if (result.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Il n'y a pas de pertubateurs pour ce medicament", "Liste de pertubateurs", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Il n'y a pas de pertubateurs pour ce medicament", "Liste des pertubateurs", JOptionPane.ERROR_MESSAGE);
         }
         else {
             String msg = result.get(0);
