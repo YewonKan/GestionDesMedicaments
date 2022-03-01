@@ -291,6 +291,10 @@ public class frmModifMedicament extends javax.swing.JFrame
         else if(txtNomCommercial.getText().compareTo(String.valueOf(MedEx.getCdFamMedicament())) == 0 || txtCompo.getText().compareTo(MedEx.getComposition()) == 0 || txtEffet.getText().compareTo(MedEx.getEffet()) == 0 || txtInterdiction.getText().compareTo(MedEx.getContreIndic()) == 0 || txtprix.getText().compareTo(String.valueOf(MedEx.getPrix())) == 0){
             JOptionPane.showMessageDialog(this, "same informations as before ! change the information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
+        else if (fm.VerifierMedicamentExist(txtNomCommercial.getText())){
+             JOptionPane.showMessageDialog(this, "Ce medicament existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+
+        }
         else {
 
             String unNomMedicament = txtNomCommercial.getText();

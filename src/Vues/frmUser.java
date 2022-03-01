@@ -90,6 +90,11 @@ public class frmUser extends javax.swing.JFrame
         jLabel2.setText("Type de personne ");
 
         txtCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        txtCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodeActionPerformed(evt);
+            }
+        });
 
         txtType.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
@@ -218,17 +223,26 @@ public class frmUser extends javax.swing.JFrame
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
         int TypeIndex = Integer.parseInt(txtCode.getText());
-
         String userLabel = txtType.getText();
-        if (userLabel.compareTo("") == 0) {
+       
+              
+        
+        if (txtType.getText().compareTo("") == 0) {
              JOptionPane.showMessageDialog(this, "Remplir le champs s'il vous plaît", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         
+        }
+        else if(fm.VerifierTypeExist(userLabel)){
+            JOptionPane.showMessageDialog(this, "Ce type de personne existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+
         }
         else{
             TypeIndividu userInputType = new TypeIndividu(TypeIndex, userLabel);
             fm.setTypePersonne(userInputType);
             JOptionPane.showMessageDialog(this, "Suceed", "Suceed", JOptionPane.INFORMATION_MESSAGE);
         }
+        
+        
+        
     }//GEN-LAST:event_btnInsererMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -265,6 +279,10 @@ public class frmUser extends javax.swing.JFrame
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPrescMouseClicked
+
+    private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodeActionPerformed
 
     /**
      * @param args the command line arguments

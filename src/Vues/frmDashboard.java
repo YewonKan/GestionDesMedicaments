@@ -45,6 +45,7 @@ public class frmDashboard extends javax.swing.JFrame {
         BtnGraph2 = new javax.swing.JButton();
         BtnGraph3 = new javax.swing.JButton();
         Btngraph4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -92,6 +93,11 @@ public class frmDashboard extends javax.swing.JFrame {
                 BtnGraphe1MouseClicked(evt);
             }
         });
+        BtnGraphe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGraphe1ActionPerformed(evt);
+            }
+        });
 
         BtnGraph2.setText("le nombre medicament prescrit");
         BtnGraph2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,6 +136,9 @@ public class frmDashboard extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSET/imageGraph.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -138,23 +147,29 @@ public class frmDashboard extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(Btngraph4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(BtnGraphe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnGraph2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnGraph3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(57, 258, Short.MAX_VALUE))))
+                            .addComponent(BtnGraph2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(160, 160, 160)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Btngraph4)
+                    .addComponent(BtnGraph3))
+                .addContainerGap(818, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addGap(49, 49, 49)
                 .addComponent(BtnGraphe1)
-                .addGap(51, 51, 51)
-                .addComponent(BtnGraph2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(BtnGraph2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 421, Short.MAX_VALUE)
                 .addComponent(BtnGraph3)
                 .addGap(39, 39, 39)
                 .addComponent(Btngraph4)
@@ -270,6 +285,10 @@ public class frmDashboard extends javax.swing.JFrame {
         fra.setVisible(true);
     }//GEN-LAST:event_BtnGraph3MouseClicked
 
+    private void BtnGraphe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGraphe1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnGraphe1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +330,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private javax.swing.JButton BtnGraphe1;
     private javax.swing.JButton Btngraph4;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
