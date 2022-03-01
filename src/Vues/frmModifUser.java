@@ -296,11 +296,17 @@ public class frmModifUser extends javax.swing.JFrame
 
     private void btnInserer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInserer1MouseClicked
 
+        TypeIndividu type = fm.getTypeIndividuByIndex(SelectedType);
         if (txtTypeType.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Ecrire un label s'il vous plaît", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
-        else if(txtCodeType.getText().compareTo(String.valueOf(SelectedType)) == 0){
+        
+        else if(txtTypeType.getText().compareTo(type.getTIlibelle()) == 0){
             JOptionPane.showMessageDialog(this, "Same value than before", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+
+        }
+        else if(fm.VerifierTypeExist(txtTypeType.getText())){
+            JOptionPane.showMessageDialog(this, "Ce type de personne existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
 
         }
         else {
