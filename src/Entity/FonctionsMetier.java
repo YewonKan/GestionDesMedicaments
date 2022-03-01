@@ -359,7 +359,7 @@ public class FonctionsMetier implements IMetier
         return user;
 
     }
-
+    
     @Override
     public String getNomMedicament(int index) {
         String nom = "";
@@ -499,4 +499,46 @@ public class FonctionsMetier implements IMetier
         }
         return lesDatas;
     }
+
+    @Override
+    public boolean VerifierTypeExist(String type) {
+        boolean resultat = false;
+        
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("SELECT TIN_LIBELLE FROM type_individu");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if(type.compareTo(rs.getString(1))==0){
+                    resultat = true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultat;
+    }
+     @Override
+    public boolean VerifierMedicamentExist(String med) {
+        boolean resultat = false;
+        
+        try {
+
+            maCnx = ConnexionBdd.getCnx();
+            ps = maCnx.prepareStatement("SELECT MED_NOMCOMMERCIAL FROM medicament");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if(med.compareTo(rs.getString(1))==0){
+                    resultat = true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FonctionsMetier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultat;
+    }
 }
+

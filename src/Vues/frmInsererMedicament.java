@@ -205,6 +205,11 @@ public class frmInsererMedicament extends javax.swing.JFrame
                 btnPersMouseClicked(evt);
             }
         });
+        btnPers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnPers);
 
         jPanel2.setBackground(new java.awt.Color(89, 136, 255));
@@ -414,6 +419,10 @@ public class frmInsererMedicament extends javax.swing.JFrame
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPersMouseClicked
+
+    private void btnPersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPersActionPerformed
 
     /**
      * @param args the command line arguments
