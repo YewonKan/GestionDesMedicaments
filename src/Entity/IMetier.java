@@ -32,7 +32,7 @@ public interface IMetier {
     public Medicament getMedicamentByIndex(int index);
     public TypeIndividu getTypeIndividuByIndex(int index);
     public boolean VerifierTypeExist(String type);
-    public boolean VerifierMedicamentExist(String med);
+    public boolean VerifierMedicamentExist(Medicament med);
     public  HashMap<String,Integer> GetDatasGraph1();
     public HashMap<String,Integer> GetDatasGraph2();
     public HashMap<String,Integer> GetDatasGraph3();

@@ -521,17 +521,17 @@ public class FonctionsMetier implements IMetier
         return resultat;
     }
      @Override
-    public boolean VerifierMedicamentExist(String med) {
+    public boolean VerifierMedicamentExist(Medicament med) {
         boolean resultat = false;
         
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("SELECT MED_NOMCOMMERCIAL FROM medicament");
+            ps = maCnx.prepareStatement("SELECT MED_NOMCOMMERCIAL,FAM_CODE, MED_COMPOSITION,MED_EFFETS ,MED_CONTREINDIC,MED_PRIXECHANTILLON FROM medicament");
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                if(med.compareTo(rs.getString(1))==0){
+                if(med.getNomMedicament().compareTo(rs.getString(1))==0 && med.getCdFamMedicament()==rs.getInt(2)&&med.getComposition().compareTo(rs.getString(3))==0&&med.getEffet().compareTo(rs.getString(4))==0&&med.getContreIndic().compareTo(rs.getString(5))==0&&med.getPrix()== rs.getFloat(6)){
                     resultat = true;
                 }
             }

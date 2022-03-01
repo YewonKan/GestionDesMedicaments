@@ -337,25 +337,28 @@ public class frmInsererMedicament extends javax.swing.JFrame
     }//GEN-LAST:event_txtDepotActionPerformed
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
+        String unNomMedicament = txtNomCommercial.getText();
+        String nomFamMedicament = fm.getNomFamille(jComboBox1.getSelectedIndex() + 1);
+        String unComposition = txtCompo.getText();
+        String unEffet = txtEffet.getText();
+        String unContreIndic = txtInterdiction.getText();
+        Float unPrix = Float.parseFloat(txtprix.getText());
+        int numFam = fm.getNumFamille(nomFamMedicament);
 
+        Medicament userInputMedicament = new Medicament(fm.getIndexMedicament() + 1, unNomMedicament, numFam, unComposition, unEffet, unContreIndic, unPrix);
+        
         if (txtNomCommercial.getText().compareTo("") == 0 || txtCompo.getText().compareTo("") == 0 || txtEffet.getText().compareTo("") == 0 || txtInterdiction.getText().compareTo("") == 0 || txtprix.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "Remplir les champs", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
-        else if(!StringUtils.isStrictlyNumeric(txtprix.getText())) {
-            JOptionPane.showMessageDialog(this, "Le prix doit etre un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+//        else if(!StringUtils.isStrictlyNumeric(txtprix.getText())) {
+//            JOptionPane.showMessageDialog(this, "Le prix doit etre un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+//        }
+        else if (fm.VerifierMedicamentExist(userInputMedicament)){
+             JOptionPane.showMessageDialog(this, "Ce medicament existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
 
-            String unNomMedicament = txtNomCommercial.getText();
-            String nomFamMedicament = fm.getNomFamille(jComboBox1.getSelectedIndex() + 1);
-            String unComposition = txtCompo.getText();
-            String unEffet = txtEffet.getText();
-            String unContreIndic = txtInterdiction.getText();
-            Float unPrix = Float.parseFloat(txtprix.getText());
-            int numFam = fm.getNumFamille(nomFamMedicament);
-
-            Medicament userInputMedicament = new Medicament(fm.getIndexMedicament() + 1, unNomMedicament, numFam, unComposition, unEffet, unContreIndic, unPrix);
-            fm.setMedicament(userInputMedicament);
+             fm.setMedicament(userInputMedicament);
             JOptionPane.showMessageDialog(this, "Suceed", "Suceed", JOptionPane.INFORMATION_MESSAGE);
             frmListerMedicaments frm = new frmListerMedicaments();
             frm.setVisible(true);
