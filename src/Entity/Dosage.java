@@ -15,8 +15,8 @@ public class Dosage {
     private String DoseQuantite;
     private String DoseUnite;
     
-  
-
+    
+   //constructeur de dosage 
     public Dosage(int unCode,String unQuantite,String unUnite){
         
         DoseCode = unCode;
@@ -24,8 +24,7 @@ public class Dosage {
         DoseUnite = unUnite;
        
     
-    } 
-
+    }
     /**
      * @return the DoseCode
      */

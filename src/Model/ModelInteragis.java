@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
+//remplir le tableau de interagir
+
 
 public class ModelInteragis extends AbstractTableModel {
     private String[] nomsColonnes = {"Nom Médicament"};

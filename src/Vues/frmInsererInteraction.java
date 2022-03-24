@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author 82103
  */
+
 public class frmInsererInteraction extends javax.swing.JFrame
 {
 
@@ -268,7 +269,7 @@ public class frmInsererInteraction extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//remplire les deux tables medicaments pour donner les interactions
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fm = new FonctionsMetier();
         ConnexionBdd cnx = new ConnexionBdd();
@@ -291,10 +292,11 @@ public class frmInsererInteraction extends javax.swing.JFrame
     private void tblSelect2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelect2MouseClicked
         tblSelect2.setSelectionBackground(Color.PINK);
     }//GEN-LAST:event_tblSelect2MouseClicked
-
+//verifier les conditions 
+    //envoie l'interactions des medicaments selectionnées
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
         if ((tblSelect1.getSelectedRowCount() == 0) || (tblSelect2.getSelectedRowCount() == 0)) {
-            JOptionPane.showMessageDialog(this, "Sélectionner des medicaments dans deux tables", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Sélectionner des medicaments dans les deux tables", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             String selectedMedNom1 = tblSelect1.getValueAt(tblSelect1.getSelectedRow(), 0).toString();

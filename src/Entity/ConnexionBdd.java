@@ -21,7 +21,7 @@ public class ConnexionBdd
    private static Connection cnx;
 
    
-    
+    //connexion de BBD 
     public ConnexionBdd(){
         try {
             String chaine = "com.mysql.jdbc.Driver";

@@ -268,7 +268,7 @@ public class frmListerTypePers extends javax.swing.JFrame
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
         if (txtSearch.getText() == "") {
-            JOptionPane.showMessageDialog(this, "Ecrire le nom du medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Entrer le nom du medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else if (StringUtils.isStrictlyNumeric(txtSearch.getText())) {
             JOptionPane.showMessageDialog(this, "Le nom de TypePersonne n'est pas un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);

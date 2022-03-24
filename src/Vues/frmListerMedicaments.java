@@ -336,7 +336,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
 
         if (txtSearch.getText() == "") {
-            JOptionPane.showMessageDialog(this, "Ecrirez le nom du médicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Entrer le nom du médicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             fm = new FonctionsMetier();

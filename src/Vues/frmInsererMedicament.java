@@ -335,7 +335,8 @@ public class frmInsererMedicament extends javax.swing.JFrame
     private void txtDepotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepotActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDepotActionPerformed
-
+//verifie condition 
+    //inserer medicament 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
         String unNomMedicament = txtNomCommercial.getText();
         String nomFamMedicament = fm.getNomFamille(jComboBox1.getSelectedIndex() + 1);
