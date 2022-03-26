@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
-
+//remplir le tableau de medicament
 public class ModelMedicament extends AbstractTableModel {
     private String[] nomsColonnes;
     private Vector<String[]> rows;

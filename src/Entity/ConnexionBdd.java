@@ -21,12 +21,12 @@ public class ConnexionBdd
    private static Connection cnx;
 
    
-    
+    //connexion de BBD 
     public ConnexionBdd(){
         try {
             String chaine = "com.mysql.jdbc.Driver";
             Class.forName(chaine);
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost/projet_java1?serverTimezone="
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost/projet_java?serverTimezone="
                     + TimeZone.getDefault().getID(), "root", "root");
             
         } catch (ClassNotFoundException ex) {

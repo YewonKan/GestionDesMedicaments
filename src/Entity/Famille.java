@@ -13,7 +13,8 @@ public class Famille {
     
     private int FamCode;
     private String FamLibelle;
-   
+    
+   //constructeur famille 
     public Famille(int unCode, String unLibelle){
         
         FamCode = unCode;

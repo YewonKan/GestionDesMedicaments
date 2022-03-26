@@ -154,8 +154,9 @@ public class frmAuthentification extends javax.swing.JFrame
 
     }//GEN-LAST:event_formWindowOpened
 
+    //pour verifier l'authentification 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+       
         if (txtUser.getText().compareTo("") == 0) {
             JOptionPane.showMessageDialog(this, "saisir votre login", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }

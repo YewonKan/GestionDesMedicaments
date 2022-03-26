@@ -172,8 +172,18 @@ public class frmModifMedicament extends javax.swing.JFrame
                 btnInsererMouseClicked(evt);
             }
         });
+        btnInserer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsererActionPerformed(evt);
+            }
+        });
 
         cmbFam.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cmbFam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFamActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -282,7 +292,7 @@ public class frmModifMedicament extends javax.swing.JFrame
 
         Medicament MedEx = fm.getMedicamentByIndex(SelectedMed);
         
-        String unNomMedicament = txtNomCommercial.getText();
+            String unNomMedicament = txtNomCommercial.getText();
             String nomFamMedicament = fm.getNomFamille(cmbFam.getSelectedIndex() + 1);
             String unComposition = txtCompo.getText();
             String unEffet = txtEffet.getText();
@@ -300,8 +310,8 @@ public class frmModifMedicament extends javax.swing.JFrame
 //            JOptionPane.showMessageDialog(this, "Le prix doit etre un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
 //        } withhold for a while since modifier fonction brings String
         
-        else if(txtNomCommercial.getText().compareTo(String.valueOf(MedEx.getCdFamMedicament())) == 0 || txtCompo.getText().compareTo(MedEx.getComposition()) == 0 || txtEffet.getText().compareTo(MedEx.getEffet()) == 0 || txtInterdiction.getText().compareTo(MedEx.getContreIndic()) == 0 || txtprix.getText().compareTo(String.valueOf(MedEx.getPrix())) == 0){
-            JOptionPane.showMessageDialog(this, "same informations as before ! change the information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+        else if(txtNomCommercial.getText().compareTo(String.valueOf(MedEx.getCdFamMedicament())) == 0 && txtCompo.getText().compareTo(MedEx.getComposition()) == 0 && txtEffet.getText().compareTo(MedEx.getEffet()) == 0 && txtInterdiction.getText().compareTo(MedEx.getContreIndic()) == 0 && txtprix.getText().compareTo(String.valueOf(MedEx.getPrix())) == 0){
+            JOptionPane.showMessageDialog(this, " ce sont les mêmes informations ! il faut les changer", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else if (fm.VerifierMedicamentExist(userInputMedicament)){
              JOptionPane.showMessageDialog(this, "Ce medicament existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
@@ -338,6 +348,14 @@ public class frmModifMedicament extends javax.swing.JFrame
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMoveToListMouseClicked
+
+    private void btnInsererActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsererActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInsererActionPerformed
+
+    private void cmbFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbFamActionPerformed
 
     /**
      * @param args the command line arguments

@@ -210,14 +210,14 @@ public class frmDashboard extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
+//ouvrir une page de main 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         frmMain frm = new frmMain();
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2MouseClicked
-
+//instansier l'objet de fonction metier 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         ConnexionBdd cnx = new ConnexionBdd();
@@ -230,7 +230,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private void BtnGraph2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGraph2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnGraph2ActionPerformed
-
+//permet d'afficher le premier graphe 
     private void BtnGraphe1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGraphe1MouseClicked
         DefaultCategoryDataset donnees = new DefaultCategoryDataset();
         // Permet de remplir un jeu de séries dans notre objet donnees
@@ -245,7 +245,7 @@ public class frmDashboard extends javax.swing.JFrame {
         fra.pack();
         fra.setVisible(true);
     }//GEN-LAST:event_BtnGraphe1MouseClicked
-
+//deuxiemme graphique 
     private void BtnGraph2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGraph2MouseClicked
         DefaultPieDataset donnees = new DefaultPieDataset();
         // Permet de remplir un jeu de séries dans notre objet donnees
@@ -254,7 +254,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(valeur.getKey().toString(),Double.parseDouble(valeur.getValue().toString()));
         }
-        JFreeChart graph = ChartFactory.createPieChart("le Nombre médicament prescrit",donnees,true,true,false);
+        JFreeChart graph = ChartFactory.createPieChart("le Nombre de médicament prescrit",donnees,true,true,false);
         ChartFrame fra = new ChartFrame("Graphique n°2", graph);
         fra.pack();
         fra.setVisible(true);
@@ -263,7 +263,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private void Btngraph4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btngraph4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Btngraph4ActionPerformed
-
+//quatrieme graphe 
     private void Btngraph4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btngraph4MouseClicked
         DefaultPieDataset donnees = new DefaultPieDataset();
         // Permet de remplir un jeu de séries dans notre objet donnees
@@ -272,7 +272,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(valeur.getKey().toString(),Double.parseDouble(valeur.getValue().toString()));
         }
-        JFreeChart graph = ChartFactory.createPieChart("le Nombre interagis par famille",donnees,true,true,false);
+        JFreeChart graph = ChartFactory.createPieChart("le Nombre d'interaction par famille",donnees,true,true,false);
         ChartFrame fra = new ChartFrame("Graphique n°4", graph);
         fra.pack();
         fra.setVisible(true);
@@ -281,7 +281,7 @@ public class frmDashboard extends javax.swing.JFrame {
     private void BtnGraph3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGraph3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnGraph3ActionPerformed
-
+// troisieme graphe 
     private void BtnGraph3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGraph3MouseClicked
 
         DefaultCategoryDataset donnees = new DefaultCategoryDataset();
@@ -292,7 +292,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(Double.parseDouble(valeur.getValue().toString()),"nombre médicament",valeur.getKey().toString());
         }
-        JFreeChart graph = ChartFactory.createBarChart("le Nombre médicament prescrit par famille","","nombre médicament",donnees,PlotOrientation.VERTICAL,false, true, false);
+        JFreeChart graph = ChartFactory.createBarChart("le Nombre de médicament prescrit par famille","","nombre médicament",donnees,PlotOrientation.VERTICAL,false, true, false);
         ChartFrame fra = new ChartFrame("Graphique n°3", graph);
         fra.pack();
         fra.setVisible(true);

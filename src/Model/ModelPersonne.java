@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
-
+//remplir le tableau de type d'individus 
 public class ModelPersonne extends AbstractTableModel {
     private String[] nomsColonnes = {"index", "Type"};
     private Vector<String[]> rows;

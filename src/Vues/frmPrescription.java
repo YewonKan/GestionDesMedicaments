@@ -347,6 +347,7 @@ public class frmPrescription extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbMedicamentActionPerformed
 
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         fm = new FonctionsMetier();
         ConnexionBdd cnx = new ConnexionBdd();
@@ -386,7 +387,7 @@ public class frmPrescription extends javax.swing.JFrame
             JOptionPane.showMessageDialog(this, "Inserer un dosage", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else if (txtPosologie.getText().compareTo("") == 0) {
-            JOptionPane.showMessageDialog(this, "Ecrire la frequence de la prise du medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ecrire la fréquence de la prise du medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             int MedicamentIndex = cmbMedicament.getSelectedIndex() + 1;

@@ -220,7 +220,7 @@ public class frmUser extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//ajouter un type d'individu 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
         int TypeIndex = Integer.parseInt(txtCode.getText());
         String userLabel = txtType.getText();

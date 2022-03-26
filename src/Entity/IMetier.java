@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface IMetier {
+    
+    
     public ArrayList<Medicament> getAllMedicament();
     public ArrayList<TypeIndividu> getAllIndividu();
     public ArrayList<Interagis> getAllInteragis();

@@ -23,8 +23,9 @@ public class FonctionsMetier implements IMetier
     private PreparedStatement ps;
     private Connection maCnx;
 
-    
+    //definir les fonctions declarer dans imetier 
     @Override
+    //permet de recuperer tout les medicaments 
     public ArrayList<Medicament> getAllMedicament() {
         ArrayList<Medicament> mesMedicaments = new ArrayList<Medicament>();
         try {
@@ -44,6 +45,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //permet de recuperer tout les individus
     public ArrayList<TypeIndividu> getAllIndividu() {
         ArrayList<TypeIndividu> lesTypesIndividu = new ArrayList<TypeIndividu>();
         try {
@@ -63,6 +65,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //permet de recuperer tout les interactions 
     public ArrayList<Interagis> getAllInteragis() {
         ArrayList<Interagis> lesInteragis = new ArrayList<Interagis>();
         try {
@@ -82,6 +85,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //permet de trouver id du nom de famille rentrer en parametre
     public int getNumFamille(String nomFam) {
         int FamilyNum = 0;
         //if you don't find any FamilyName match with Name, return 0 so we have to block 
@@ -101,6 +105,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //permet de recuperer tout les medicaments avec le nom de famille et pas id 
     public ArrayList<MedicamentFamNom> getAllMedicamentWithFamName() {
         ArrayList<MedicamentFamNom> mesMedicaments = new ArrayList<>();
         String FamilyName = null;
@@ -122,6 +127,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    // inserer le medicament 
     public void setMedicament(Medicament med) {
         try {
 
@@ -135,6 +141,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    // inserer prescription
     public void setPrescrire(Prescrire prescrption) {
         try {
 
@@ -148,6 +155,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //inserer de type personne 
     public void setTypePersonne(TypeIndividu typePersonne) {
         try {
 
@@ -161,6 +169,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    // permet d'afficher id lors de l'ajout 
     public int getIndexTypeIndividu() {
         int indexType = 99999;
         // if the result is 99999 that means sql is not connected
@@ -180,6 +189,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+     // permet d'afficher id lors de l'ajout
     public int getIndexMedicament() {
         int indexMedicine = 99999;
         // if the result is 99999 that means sql is not connected
@@ -202,6 +212,7 @@ public class FonctionsMetier implements IMetier
      * 
      */
     @Override
+    // inserer interaction 
     public void setInteragis(int med1, int med2) {
         try {
 
@@ -215,6 +226,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+     // on saisie le nom du medicament qui permet de retourner l'id  
     public int getMatchedIndex(String medNom) {
         int index = 0;
         try {
@@ -235,6 +247,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //modifier medicament 
     public void ModifierMedicament(Medicament med) {
         try {
 
@@ -248,6 +261,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //modifier type personne 
     public void ModifierTypePerson(TypeIndividu type) {
         try {
 
@@ -261,6 +275,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+     // permet de recuperer tout les familles 
     public ArrayList<Famille> getAllFamille() {
         ArrayList<Famille> lesFamille = new ArrayList<Famille>();
         try {
@@ -280,6 +295,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+     // on saisie l'id qui permet de retourner la famille 
     public String getNomFamille(int indexFam) {
         String FamilyLabel = "";
         //if you don't find any FamilyName match with Name, return 0 so we have to block 
@@ -299,6 +315,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //barre de recherche 
     public ArrayList<MedicamentFamNom> getMedicamentSearch(String rn) {
 
         ArrayList<MedicamentFamNom> mesMedicaments = new ArrayList<>();
@@ -319,6 +336,8 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    
+    //barre de recherche 
     public ArrayList<TypeIndividu> getTypeIndividuSearch(String rn) {
         ArrayList<TypeIndividu> mesIndividu = new ArrayList<>();
         try {
@@ -338,6 +357,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    
     public users VerfierIdentifiants(String login, String mdp) {
 
         users user = null;
@@ -361,6 +381,7 @@ public class FonctionsMetier implements IMetier
     }
     
     @Override
+    // on saisie l'id qui permet de retourner le nom du medicament 
     public String getNomMedicament(int index) {
         String nom = "";
         try {
@@ -381,6 +402,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //nb de medicament par famille 
     public HashMap<String,Integer> GetDatasGraph1() {
         HashMap<String,Integer> lesDatas = new HashMap<>();
         try {
@@ -403,6 +425,8 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+     // permet d'afficher medicament avec l'id 
+    
     public Medicament getMedicamentByIndex(int index) {
         Medicament resMed = null;
         try {
@@ -421,6 +445,8 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    // permet d'afficher nom d'individu avec l'id 
+    
     public TypeIndividu getTypeIndividuByIndex(int index) {
          TypeIndividu resType = null;
         try {
@@ -439,6 +465,7 @@ public class FonctionsMetier implements IMetier
     }
     
     @Override
+    //le nb de medicament prescrit 
     public HashMap<String,Integer> GetDatasGraph2()
     {
         HashMap<String,Integer> lesDatas = new HashMap<>();
@@ -459,6 +486,7 @@ public class FonctionsMetier implements IMetier
     }
     
     @Override
+    // nb de medicament prescrit par famille 
     public HashMap<String,Integer> GetDatasGraph3()
     {
         HashMap<String,Integer> lesDatas = new HashMap<>();
@@ -479,6 +507,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    // nombre d'interaction par famille 
     public HashMap<String, Integer> GetDatasGraph4() {
      HashMap<String,Integer> lesDatas = new HashMap<>();
         try {
@@ -501,6 +530,7 @@ public class FonctionsMetier implements IMetier
     }
 
     @Override
+    //permet de verifier si il existe deja 
     public boolean VerifierTypeExist(String type) {
         boolean resultat = false;
         
@@ -521,6 +551,7 @@ public class FonctionsMetier implements IMetier
         return resultat;
     }
      @Override
+     //permet de verifier si il existe deja 
     public boolean VerifierMedicamentExist(Medicament med) {
         boolean resultat = false;
         
