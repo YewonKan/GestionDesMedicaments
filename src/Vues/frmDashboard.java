@@ -72,7 +72,7 @@ public class frmDashboard extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         BtnGraphe1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        BtnGraphe1.setText("Nombre Medicament par Famille");
+        BtnGraphe1.setText("Quantité de médicaments par famille");
         BtnGraphe1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnGraphe1MouseClicked(evt);
@@ -85,7 +85,7 @@ public class frmDashboard extends javax.swing.JFrame {
         });
 
         BtnGraph2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        BtnGraph2.setText("le nombre medicament prescrit");
+        BtnGraph2.setText("Le nombre de médicaments prescrits");
         BtnGraph2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnGraph2MouseClicked(evt);
@@ -98,7 +98,7 @@ public class frmDashboard extends javax.swing.JFrame {
         });
 
         BtnGraph3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        BtnGraph3.setText("Le nombre de prescription par famille");
+        BtnGraph3.setText("le Nombre de médicament prescrit par famille");
         BtnGraph3.setToolTipText("");
         BtnGraph3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,7 +112,7 @@ public class frmDashboard extends javax.swing.JFrame {
         });
 
         Btngraph4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Btngraph4.setText("Le nombre de interagis par medicament");
+        Btngraph4.setText("Le nombre des interactions par médicament");
         Btngraph4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Btngraph4MouseClicked(evt);
@@ -240,7 +240,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(Double.parseDouble(valeur.getValue().toString()),"nombre médicament",valeur.getKey().toString());
         }
-        JFreeChart graph = ChartFactory.createBarChart("Nombre médicament par famille","","nombre médicament",donnees,PlotOrientation.VERTICAL,false, true, false);
+        JFreeChart graph = ChartFactory.createBarChart("Quantité de médicaments par famille","","nombre médicament",donnees,PlotOrientation.VERTICAL,false, true, false);
         ChartFrame fra = new ChartFrame("Graphique n°1", graph);
         fra.pack();
         fra.setVisible(true);
@@ -254,7 +254,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(valeur.getKey().toString(),Double.parseDouble(valeur.getValue().toString()));
         }
-        JFreeChart graph = ChartFactory.createPieChart("le Nombre de médicament prescrit",donnees,true,true,false);
+        JFreeChart graph = ChartFactory.createPieChart("Le nombre de médicaments prescrits",donnees,true,true,false);
         ChartFrame fra = new ChartFrame("Graphique n°2", graph);
         fra.pack();
         fra.setVisible(true);
@@ -272,7 +272,7 @@ public class frmDashboard extends javax.swing.JFrame {
         {
             donnees.setValue(valeur.getKey().toString(),Double.parseDouble(valeur.getValue().toString()));
         }
-        JFreeChart graph = ChartFactory.createPieChart("le Nombre d'interaction par famille",donnees,true,true,false);
+        JFreeChart graph = ChartFactory.createPieChart("Le nombre des interactions par médicament",donnees,true,true,false);
         ChartFrame fra = new ChartFrame("Graphique n°4", graph);
         fra.pack();
         fra.setVisible(true);
