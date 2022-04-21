@@ -268,18 +268,18 @@ public class frmListerTypePers extends javax.swing.JFrame
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
         if (txtSearch.getText() == "") {
-            JOptionPane.showMessageDialog(this, "Entrer le nom du medicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ecrire le type d'individu svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
-        else if (StringUtils.isStrictlyNumeric(txtSearch.getText())) {
+        /*else if (StringUtils.isStrictlyNumeric(txtSearch.getText())) {
             JOptionPane.showMessageDialog(this, "Le nom de TypePersonne n'est pas un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
         else {
             fm = new FonctionsMetier();
             mdlPersonne = new ModelPersonne();
             mdlPersonne.loadDatas(fm.getTypeIndividuSearch(txtSearch.getText()));
             tblTypePersonne.setModel(mdlPersonne);
-            if (fm.getMedicamentSearch(txtSearch.getText()).isEmpty()) {
-                JOptionPane.showMessageDialog(this, "il n'y a aucun résultat correspondant au nom de ce médicament", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+            if (fm.getTypeIndividuSearch(txtSearch.getText()).isEmpty()) {
+                JOptionPane.showMessageDialog(this, "il n'y a aucun résultat correspondant à ce type de personne", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
                 mdlPersonne.loadDatas(fm.getAllIndividu());
                 tblTypePersonne.setModel(mdlPersonne);
             }

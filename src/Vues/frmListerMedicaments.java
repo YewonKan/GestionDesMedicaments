@@ -335,8 +335,9 @@ public class frmListerMedicaments extends javax.swing.JFrame
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
 
-        if (txtSearch.getText() == "") {
-            JOptionPane.showMessageDialog(this, "Entrer le nom du médicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+       
+       if (txtSearch.getText() == "") {
+            JOptionPane.showMessageDialog(this, "Ecrire le nom du medicament svp", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
         else {
             fm = new FonctionsMetier();
@@ -366,7 +367,8 @@ public class frmListerMedicaments extends javax.swing.JFrame
     }//GEN-LAST:event_listePertubateurActionPerformed
 
     private void tblMedicamentMouseClicked(java.awt.event.MouseEvent evt) {
-        int selectedMedIndex = Integer.parseInt(tblMedicament.getValueAt(tblMedicament.getSelectedRow(), 0).toString());
+   
+     int selectedMedIndex = Integer.parseInt(tblMedicament.getValueAt(tblMedicament.getSelectedRow(), 0).toString());
         ArrayList<Interagis> lesInteragis = fm.getAllInteragis();
         ArrayList<String> result = new ArrayList<String>();
 
@@ -382,7 +384,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
         }
 
         if (result.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Il n'y a pas de pertubateurs pour ce medicament", "Liste des pertubateurs", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Il n'y a pas de pertubateurs pour ce medicament", "Liste de pertubateurs", JOptionPane.ERROR_MESSAGE);
         }
         else {
             String msg = result.get(0);
@@ -392,6 +394,7 @@ public class frmListerMedicaments extends javax.swing.JFrame
 
             listePertubateur.setText(msg);
         }
+    
     }
 
     /**
