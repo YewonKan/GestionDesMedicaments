@@ -249,10 +249,19 @@ public class FonctionsMetier implements IMetier
     @Override
     //modifier medicament 
     public void ModifierMedicament(Medicament med) {
-        try {
+       try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("UPDATE medicament SET MED_NOMCOMMERCIAL= '" + med.getNomMedicament() + "', FAM_CODE = " + med.getCdFamMedicament() + ",MED_COMPOSITION='" + med.getComposition() + "',MED_EFFETS = '" + med.getEffet() + "', MED_CONTREINDIC = '" + med.getContreIndic() + "',MED_PRIXECHANTILLON = " + med.getPrix() + " WHERE MED_DEPOTLEGAL = " + med.getIdMedicament());
+            //ps = maCnx.prepareStatement("UPDATE medicament SET MED_NOMCOMMERCIAL= '" + med.getNomMedicament() + "', FAM_CODE = " + med.getCdFamMedicament() + ",MED_COMPOSITION='" + med.getComposition() + "',MED_EFFETS = '" + med.getEffet() + "', MED_CONTREINDIC = '" + med.getContreIndic() + "',MED_PRIXECHANTILLON = " + med.getPrix() + " WHERE MED_DEPOTLEGAL = " + med.getIdMedicament());
+            ps = maCnx.prepareStatement("UPDATE medicament SET MED_NOMCOMMERCIAL= ?, FAM_CODE = ?,MED_COMPOSITION= ?, MED_EFFETS = ?, MED_CONTREINDIC = ?,MED_PRIXECHANTILLON = ? WHERE MED_DEPOTLEGAL = ?");
+            ps.setString(1,med.getNomMedicament());
+            ps.setInt(2,med.getCdFamMedicament());
+            ps.setString(3,med.getComposition()); 
+            ps.setString(4,med.getEffet()); 
+            ps.setString(5,med.getContreIndic()); 
+            ps.setFloat(6,med.getPrix());
+            ps.setInt(7,med.getIdMedicament());
+             
             ps.executeUpdate();
 
         } catch (SQLException ex) {
@@ -338,13 +347,16 @@ public class FonctionsMetier implements IMetier
     @Override
     
     //barre de recherche 
-    public ArrayList<TypeIndividu> getTypeIndividuSearch(String rn) {
+     public ArrayList<TypeIndividu> getTypeIndividuSearch(String rn) {
         ArrayList<TypeIndividu> mesIndividu = new ArrayList<>();
         try {
 
             maCnx = ConnexionBdd.getCnx();
-            ps = maCnx.prepareStatement("select TIN_CODE, TIN_LIBELLE from type_individu where TIN_LIBELLE like '%" + rn + "%'");
+            ps = maCnx.prepareStatement("select TIN_CODE, TIN_LIBELLE from type_individu where TIN_LIBELLE like ?");
+            ps.setString(1,'%'+rn+'%');
             rs = ps.executeQuery();
+            
+            
 
             while (rs.next()) {
                 TypeIndividu m = new TypeIndividu(rs.getInt(1), rs.getString(2));

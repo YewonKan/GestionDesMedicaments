@@ -3,19 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmAuthentification.java</file>
-            <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmPrescription.java</file>
             <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmListerTypePers.java</file>
-            <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmListerMedicaments.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Model/ModelMedicament.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/Dosage.java</file>
             <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmModifMedicament.java</file>
             <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmDashboard.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/Medicament.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Model/ModelInteragis.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/Prescrire.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/Interagis.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/users.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/FonctionsMetier.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmInsererInteraction.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmAuthentification.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmPrescription.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/Famille.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/ASSET/backToList.png</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/MedicamentFamNom.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmListerMedicaments.java</file>
             <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmUser.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Model/ModelPersonne.java</file>
             <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmMain.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/Entity/IMetier.java</file>
             <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmInsererMedicament.java</file>
             <file>file:/C:/Users/ruth9/Projet1/src/Entity/ConnexionBdd.java</file>
-            <file>file:/C:/Users/ruth9/Projet1/src/Entity/FonctionsMetier.java</file>
+            <file>file:/C:/Users/ruth9/Projet1/src/ASSET/ajout.PNG</file>
             <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmModifUser.java</file>
-            <file>file:/C:/Users/ruth9/Projet1/src/Vues/frmInsererInteraction.java</file>
         </group>
     </open-files>
 </project-private>

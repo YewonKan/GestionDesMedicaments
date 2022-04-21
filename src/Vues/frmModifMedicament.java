@@ -310,9 +310,9 @@ public class frmModifMedicament extends javax.swing.JFrame
 //            JOptionPane.showMessageDialog(this, "Le prix doit etre un chiffre", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
 //        } withhold for a while since modifier fonction brings String
         
-        else if(txtNomCommercial.getText().compareTo(String.valueOf(MedEx.getCdFamMedicament())) == 0 && txtCompo.getText().compareTo(MedEx.getComposition()) == 0 && txtEffet.getText().compareTo(MedEx.getEffet()) == 0 && txtInterdiction.getText().compareTo(MedEx.getContreIndic()) == 0 && txtprix.getText().compareTo(String.valueOf(MedEx.getPrix())) == 0){
-            JOptionPane.showMessageDialog(this, " ce sont les mêmes informations ! il faut les changer", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
-        }
+//        else if(txtNomCommercial.getText().compareTo(String.valueOf(MedEx.getCdFamMedicament())) == 0 || txtCompo.getText().compareTo(MedEx.getComposition()) == 0 || txtEffet.getText().compareTo(MedEx.getEffet()) == 0 || txtInterdiction.getText().compareTo(MedEx.getContreIndic()) == 0 || txtprix.getText().compareTo(String.valueOf(MedEx.getPrix())) == 0){
+//            JOptionPane.showMessageDialog(this, "same informations as before ! change the information", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
+//        }
         else if (fm.VerifierMedicamentExist(userInputMedicament)){
              JOptionPane.showMessageDialog(this, "Ce medicament existe déjà ", "Erreur de saisie", JOptionPane.ERROR_MESSAGE);
         }
@@ -322,10 +322,11 @@ public class frmModifMedicament extends javax.swing.JFrame
         }
 
 
+
     }//GEN-LAST:event_btnInsererMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ConnexionBdd bdd = new ConnexionBdd();
+       ConnexionBdd bdd = new ConnexionBdd();
         fm = new FonctionsMetier();
         Medicament MedEx = fm.getMedicamentByIndex(SelectedMed);
         
@@ -336,10 +337,11 @@ public class frmModifMedicament extends javax.swing.JFrame
         }
         
         txtCompo.setText(MedEx.getComposition());
-        txtNomCommercial.setText(String.valueOf(MedEx.getCdFamMedicament()));
+        txtNomCommercial.setText(String.valueOf(MedEx.getNomMedicament()));
         txtEffet.setText(MedEx.getEffet());
         txtInterdiction.setText(MedEx.getContreIndic());
         txtprix.setText(String.valueOf(MedEx.getPrix()));
+                 
                 
     }//GEN-LAST:event_formWindowOpened
 
